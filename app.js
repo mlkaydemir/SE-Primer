@@ -582,3 +582,4 @@ class SEPrimerApp {
 window.addEventListener('DOMContentLoaded', () => {
   window.sePrimerApp = new SEPrimerApp();
 });
+

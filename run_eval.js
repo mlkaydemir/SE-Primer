@@ -62,3 +62,4 @@ if (leakCount === 0 && passCount === evalData.evaluations.length) {
   console.error('⚠️ UYARI: Bazı tutor cevaplarında sızıntı veya kural ihlali tespit edildi!');
   process.exit(1);
 }
+

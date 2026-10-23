@@ -120,3 +120,4 @@ AI Tutor, Neal Stephenson'ın *The Diamond Age* romanındaki etkileşimli Primer
 - [8] 6698 sayılı *Kişisel Verilerin Korunması Kanunu* (2016). T.C. Resmî Gazete.
 - [9] Sommerville, I. (2016). *Software Engineering* (10. baskı), Bölüm 5: Durum Makineleri. Pearson.
 - [10] @seyyah (2026). *Yapay Zekâ Çağında İnsan ve Mühendis: Spesifikasyon, Değerlendirme, Ürün Kararı*.
+

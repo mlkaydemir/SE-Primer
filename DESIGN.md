@@ -130,3 +130,4 @@ Proje bünyesinde Stitch mobil ekran prototipleri doğrudan `public/stitch-scree
 1. `screen-1-onboarding.html`: Giriş, profil ve hedef seçimi Stitch prototipi.
 2. `screen-2-crisis.html`: 08:00 kriz ekranı, 60s geri sayım sayacı, telemetri, karar butonları ve Sokratik Tutor Stitch prototipi.
 3. `screen-3-outcome.html`: Son A ve Son B post-mortem değerlendirme ekranı Stitch prototipi.
+

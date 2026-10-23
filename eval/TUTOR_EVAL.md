@@ -93,3 +93,4 @@ npm run test:eval
 node eval/run_eval.js
 ```
 Bu script `eval/tutor_eval.json` dosyasındaki tüm örnekleri doğrular ve konsolda renkli hata/başarı tablosunu üretir.
+

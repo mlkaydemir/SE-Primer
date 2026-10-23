@@ -69,3 +69,4 @@ Uygulama çalışırken tarayıcının üst menüsündeki **"🎬 60s Demo"** bu
   6 passing (12.4s)
   Video recorded: cypress/videos/se_primer_all_paths.cy.js.mp4
 ```
+

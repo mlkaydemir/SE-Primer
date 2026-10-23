@@ -229,3 +229,4 @@ flowchart TD
 1. **Kesin Kural 1 (Cevap Yasağı):** Model asla "A seçeneğini seçmelisin", "B yanlıştır", "Rollback yap" gibi yönlendirici emir kipi kullanamaz.
 2. **Kesin Kural 2 (Sokratik Yansıtma):** Model öğrencinin sorusunu alıp temel yazılım prensibine (durum yönetimi, idempotentlik, veri bütünlüğü, KVKK) bağlayarak 1 adet düşündürücü soru yöneltir.
 3. **Kesin Kural 3 (Rol Odaklılık):** Eğer oyuncu Junior ise ipucunda temel kavramlar (örn. "schema migration", "smoke test") basit bir benzetmeyle hissettirilir; Senior ise mimari riskler (deadlock, transaction isolation, audit log) vurgulanır.
+

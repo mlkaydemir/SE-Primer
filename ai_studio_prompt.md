@@ -47,3 +47,4 @@ KESİN KURALLAR (SOKRATİK SÖZLEŞME):
 ```text
 Doğru şıkkı ben söylersem nöbetçi mühendis sen değil ben olmuş olurum! Canlıda yama yapmanın en büyük cazibesi hızlı çözme arzusudur. Peki canlı ortamda yapacağın bir syntax hatası veya eksik bir SQL alter komutu veritabanı bağlantı havuzunu tamamen kilitlerse bunu nasıl geri alacaksın? Eski sürüme dönmeden önce dünkü veritabanı şemasının değişip değişmediğini nasıl kontrol edersin?
 ```
+
