@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stitch Ekran 3: Sonuç ve Post-Mortem · SE Primer</title>
+  <style>
+    :root {
+      --bg: #090D16;
+      --surface: #111827;
+      --surface-border: #1F2937;
+      --accent: #3B82F6;
+      --accent-tutor: #8B5CF6;
+      --text: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --danger: #EF4444;
+      --warning: #F59E0B;
+      --success: #10B981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #030712; color: var(--text); display: flex; justify-content: center; padding: 20px 10px; }
+    .phone-container { width: 390px; min-height: 844px; background: var(--bg); border: 2px solid #374151; border-radius: 44px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); display: flex; flex-direction: column; position: relative; }
+    .notch { width: 140px; height: 26px; background: #000; margin: 0 auto 12px; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; }
+    .content { padding: 16px 20px 30px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    
+    .outcome-card { background: linear-gradient(180deg, #064E3B 0%, #111827 100%); border: 1.5px solid #059669; border-radius: 16px; padding: 16px; text-align: center; }
+    .outcome-card.bad { background: linear-gradient(180deg, #7F1D1D 0%, #111827 100%); border-color: #DC2626; }
+    .outcome-badge { display: inline-block; background: #10B981; color: #064E3B; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; margin-bottom: 8px; }
+    .outcome-card.bad .outcome-badge { background: #EF4444; color: white; }
+    .outcome-title { font-size: 20px; font-weight: 800; }
+    .outcome-sub { font-size: 12px; color: #A7F3D0; margin-top: 6px; }
+    .outcome-card.bad .outcome-sub { color: #FECACA; }
+
+    .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .metric-item { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 12px; padding: 10px; text-align: center; }
+    .metric-val { font-size: 16px; font-weight: 800; color: #60A5FA; }
+    .metric-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+
+    .post-mortem { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 14px; padding: 14px; }
+    .pm-title { font-size: 12px; font-weight: 700; color: #E5E7EB; text-transform: uppercase; margin-bottom: 8px; }
+    .pm-list { font-size: 11px; color: #D1D5DB; line-height: 1.5; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
+
+    .btn-restart { margin-top: auto; background: #374151; color: white; border: 1px solid #4B5563; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; text-align: center; }
+    .btn-restart:hover { background: #4B5563; }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <div class="notch"></div>
+    <div class="content">
+      <div>
+        <span style="font-size:10px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.5px;">YZM301 · STITCH EKRAN 3 / 3</span>
+      </div>
+
+      <!-- İyi Son (Son A) Örneği -->
+      <div class="outcome-card">
+        <span class="outcome-badge">🏆 SON A · İYİ SON</span>
+        <div class="outcome-title">08:25 · Sistem Ayakta, Veri Güvende!</div>
+        <div class="outcome-sub">Kriz 25 dakikada başarıyla çözüldü. 300 hasta randevusunu aldı.</div>
+      </div>
+
+      <!-- Metrikler -->
+      <div class="metrics-grid">
+        <div class="metric-item">
+          <div class="metric-val" style="color:#34D399;">25 Dk</div>
+          <div class="metric-lbl">MTTR (Çözüm Süresi)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:#60A5FA;">300 / 300</div>
+          <div class="metric-lbl">Kurtarılan Hasta</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:#A78BFA;">%100 Uyum</div>
+          <div class="metric-lbl">KVKK Veri Gizliliği</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" style="color:#FBBF24;">0 TL</div>
+          <div class="metric-lbl">Hukuki Ceza Riski</div>
+        </div>
+      </div>
+
+      <!-- Post-Mortem -->
+      <div class="post-mortem">
+        <div class="pm-title">📋 Mühendislik Post-Mortem Özeti</div>
+        <ul class="pm-list">
+          <li><strong>Mimari:</strong> Stabil v1.4 tagine rollback yapılarak gereksiz canlı debugging engellendi.</li>
+          <li><strong>Doğrulama:</strong> 90 saniyelik smoke test ile kör dağıtım riski bertaraf edildi.</li>
+          <li><strong>KVKK:</strong> Hasta sağlık verisi maskelenerek Madde 6 ihlali önlendi.</li>
+        </ul>
+      </div>
+
+      <button class="btn-restart">🔄 FARKLI BİR YOL İLE YENİDEN OYNA</button>
+    </div>
+  </div>
+</body>
+</html>

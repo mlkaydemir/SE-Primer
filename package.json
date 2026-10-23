@@ -1,0 +1,26 @@
+{
+  "name": "se-primer",
+  "version": "1.0.0",
+  "description": "YZM301 SE Primer - Kisilestirilmis Yazilim Muhendisligi Kriz Simulasyonu",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test:eval": "node run_eval.js",
+    "test:cypress": "cypress open",
+    "test:cypress:run": "cypress run --config video=true"
+  },
+  "keywords": [
+    "se-primer",
+    "software-engineering",
+    "socratic-tutor",
+    "cypress",
+    "ai-studio",
+    "spec-driven",
+    "stitch"
+  ],
+  "author": "YZM301 Student",
+  "license": "MIT"
+}
