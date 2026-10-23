@@ -124,10 +124,11 @@
 
 ---
 
-## 4. Stitch Ekran Prototip Dosyaları
+## 4. Stitch Ekran Prototip Dosyaları ve Galeri
 
-Proje bünyesinde Stitch mobil ekran prototipleri doğrudan `public/stitch-screens/` dizininde tam ekran HTML/CSS olarak ve uygulamanın içindeki **"🎨 Stitch Ekran Tasarımları"** sekmesinde canlı olarak sunulmaktadır:
-1. `screen-1-onboarding.html`: Giriş, profil ve hedef seçimi Stitch prototipi.
-2. `screen-2-crisis.html`: 08:00 kriz ekranı, 60s geri sayım sayacı, telemetri, karar butonları ve Sokratik Tutor Stitch prototipi.
-3. `screen-3-outcome.html`: Son A ve Son B post-mortem değerlendirme ekranı Stitch prototipi.
+Proje bünyesinde Stitch mobil ekran prototipleri doğrudan bağımsız tam ekran HTML/CSS olarak ve uygulamanın içindeki **"🎨 Stitch Ekranları"** sekmesinde canlı olarak sunulmaktadır:
+1. `stitch_screen_1_onboarding.html`: Giriş, profil ve hedef seçimi Stitch prototipi.
+2. `stitch_screen_2_crisis.html`: 08:00 kriz ekranı, 60s geri sayım sayacı, telemetri, karar butonları ve Sokratik Tutor Stitch prototipi.
+3. `stitch_screen_3_outcome.html`: Son A ve Son B post-mortem değerlendirme ekranı Stitch prototipi.
+4. `stitch_gallery.html`: Üç mobil ekranı yan yana gösteren interaktif Stitch tasarım galerisi.
 

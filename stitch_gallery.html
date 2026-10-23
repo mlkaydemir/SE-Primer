@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Stitch Mobil Ekran Galerisi · SE Primer (YZM301)</title>
+  <style>
+    :root {
+      --bg: #030712;
+      --card-bg: #0F172A;
+      --border: #1E293B;
+      --accent: #3B82F6;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 30px 20px; }
+    header { max-width: 1300px; margin: 0 auto 30px; text-align: center; }
+    .badge { background: rgba(59, 130, 246, 0.2); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.4); padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    h1 { font-size: 28px; font-weight: 800; margin-top: 10px; }
+    p { color: var(--text-muted); font-size: 14px; margin-top: 6px; }
+    .gallery-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(390px, 1fr)); gap: 30px; justify-items: center; }
+    .screen-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 420px; }
+    .screen-meta { width: 100%; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+    .screen-title { font-size: 14px; font-weight: 800; color: #93C5FD; text-transform: uppercase; }
+    .screen-link { font-size: 11px; color: #34D399; text-decoration: none; font-weight: 700; background: rgba(16, 185, 129, 0.15); padding: 4px 10px; border-radius: 6px; }
+    .screen-link:hover { text-decoration: underline; }
+    iframe { width: 390px; height: 844px; border: 2px solid #334155; border-radius: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.8); background: #090D16; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="badge">YZM301 · GOOGLE STITCH TASARIM SİSTEMİ</span>
+    <h1>SE Primer: 3 Mobil Ekran Mimarisi</h1>
+    <p>stitch.withgoogle.com standartlarına uygun 390x844 iPhone referans ekranları canlı prototipi</p>
+  </header>
+
+  <div class="gallery-grid">
+    <!-- Ekran 1 -->
+    <div class="screen-card">
+      <div class="screen-meta">
+        <span class="screen-title">1. Giriş ve Kişiselleştirme</span>
+        <a href="stitch_screen_1_onboarding.html" target="_blank" class="screen-link">Tam Ekran Aç ↗</a>
+      </div>
+      <iframe src="stitch_screen_1_onboarding.html" title="Stitch Ekran 1"></iframe>
+    </div>
+
+    <!-- Ekran 2 -->
+    <div class="screen-card">
+      <div class="screen-meta">
+        <span class="screen-title">2. Kriz, Karar & Sokratik Tutor</span>
+        <a href="stitch_screen_2_crisis.html" target="_blank" class="screen-link">Tam Ekran Aç ↗</a>
+      </div>
+      <iframe src="stitch_screen_2_crisis.html" title="Stitch Ekran 2"></iframe>
+    </div>
+
+    <!-- Ekran 3 -->
+    <div class="screen-card">
+      <div class="screen-meta">
+        <span class="screen-title">3. Sonuç & Post-Mortem</span>
+        <a href="stitch_screen_3_outcome.html" target="_blank" class="screen-link">Tam Ekran Aç ↗</a>
+      </div>
+      <iframe src="stitch_screen_3_outcome.html" title="Stitch Ekran 3"></iframe>
+    </div>
+  </div>
+</body>
+</html>

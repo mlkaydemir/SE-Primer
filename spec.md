@@ -129,6 +129,26 @@ Senaryo: Öğrencinin doğrudan cevabı istemesi durumunda Sokratik rehberlik
 
 ---
 
+### 3.6. Kullanıcı Testi (Playtest) ve "Görünmez Varsayım" Analizi (Ödev 4. Adım İpucu Uygulaması)
+
+> **Ödev İpucu Notu:** *"Bir arkadaşına oynat. İlk takıldığı yer, spec’indeki görünmez varsayımdır. Onu kabul örneği yap."*
+
+Yapılan akran kullanıcı testi (peer playtest) sırasında arkadaşımızın ilk takıldığı nokta: **Senior modunda 60 saniyelik süre baskısı altında karar vermezse ne olacağı belirsizliğiydi**. Sistemde daha önce örtük (görünmez) olarak "kullanıcı seçim yapana kadar bekler" varsayımı mevcuttu. Ancak gerçek bir krizde nöbetçinin hiçbir şey yapmaması sistemin çöküşünü garanti eder.
+
+Bu görünmez varsayım gün yüzüne çıkarılarak **Bonus Kabul Örneği (AC-6)** olarak sisteme işlenmiştir:
+
+```gherkin
+Kabul Örneği 6 (AC-6): Senior Stres Süre Aşımı (Time-out Fail-safe Kuralı)
+  DİYELİM Kİ kullanıcı Senior modunda simülasyona başladı
+  VE 60 saniyelik stres zamanlayıcısı geri sayıyor
+  EĞER kullanıcı 60 saniye boyunca hiçbir butona tıklamazsa
+  O ZAMAN sistem kilitlenip beklemek yerine otomatik olarak 'Fail-Safe Stabil Durum' eylemini tetikler
+  VE ekranda "Süre doldu! Nöbetçi felç oldu, otomatik kriz protokolü devreye girdi" uyarısı belirir
+  VE sistem en düşük riskli güvenli hatta (Rollback) çekilir.
+```
+
+---
+
 ## 4. Durum Makinesi ve Akış Şeması (State Machine & Flowchart)
 
 ### 4.1. Durum Makinesi (State Diagram - Sommerville Bölüm 5 Uyumlu)

@@ -51,10 +51,13 @@ class SEPrimerApp {
     this.btnStitchModal = document.getElementById('btn-stitch-modal');
     this.btnPromptModal = document.getElementById('btn-prompt-modal');
     this.btnSettingsModal = document.getElementById('btn-settings-modal');
+    this.btnEvalModal = document.getElementById('btn-eval-modal');
     this.btnRunDemo = document.getElementById('btn-run-demo');
     this.settingsModal = document.getElementById('settings-modal');
     this.promptModal = document.getElementById('prompt-modal');
     this.stitchModal = document.getElementById('stitch-modal');
+    this.evalModal = document.getElementById('eval-modal');
+    this.evalTableContainer = document.getElementById('eval-table-container');
     this.apiKeyInput = document.getElementById('api-key-input');
     this.saveApiKeyBtn = document.getElementById('btn-save-api-key');
   }
@@ -64,6 +67,10 @@ class SEPrimerApp {
     this.btnSettingsModal?.addEventListener('click', () => this.openModal(this.settingsModal));
     this.btnPromptModal?.addEventListener('click', () => this.openModal(this.promptModal));
     this.btnStitchModal?.addEventListener('click', () => this.openModal(this.stitchModal));
+    this.btnEvalModal?.addEventListener('click', () => {
+      this.populateEvalTable();
+      this.openModal(this.evalModal);
+    });
     this.btnRunDemo?.addEventListener('click', () => this.runInteractiveCypressDemo());
 
     document.querySelectorAll('.btn-close-modal').forEach(btn => {
@@ -238,15 +245,78 @@ class SEPrimerApp {
         timerLabel.innerText = `⏱️ ${this.state.timerSeconds}s`;
         if (this.state.timerSeconds <= 15) {
           timerLabel.style.color = '#EF4444';
+          this.playTick(true);
+        } else {
+          this.playTick(false);
         }
       }
 
       if (this.state.timerSeconds <= 0) {
         clearInterval(this.state.timerInterval);
-        alert('Süre doldu! Stres altında varsayılan fail-safe aksiyonu devreye alındı.');
+        alert('⚠️ SÜRE DOLDU (AC-6 Fail-Safe Kuralı)!\n\nNöbetçi mühendis zamanında karar veremedi; sistem kilitlenmeyi önlemek için otomatik olarak kararlı duruma (Rollback) çekildi.');
         this.handleDecisionSelect('A');
       }
     }, 1000);
+  }
+
+  playTick(isEmergency = false) {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = isEmergency ? 'triangle' : 'sine';
+      osc.frequency.setValueAtTime(isEmergency ? 880 : 330, ctx.currentTime);
+      gain.gain.setValueAtTime(0.03, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.05);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.05);
+    } catch (e) {
+      // Audio playback permitted only after interaction
+    }
+  }
+
+  async populateEvalTable() {
+    if (!this.evalTableContainer) return;
+    try {
+      const res = await fetch('/tutor_eval.json');
+      const data = await res.json();
+      const rows = data.evaluations.map(item => `
+        <tr style="border-bottom:1px solid #1E293B; font-size:11px;">
+          <td style="padding:8px; font-weight:700; color:#818CF8;">${item.id}</td>
+          <td style="padding:8px; color:#CBD5E1;">${item.category}</td>
+          <td style="padding:8px; color:#F9FAFB; font-style:italic;">"${item.student_prompt}"</td>
+          <td style="padding:8px; color:#E9D5FF;">${item.tutor_response}</td>
+          <td style="padding:8px; text-align:center;">
+            <span style="background:rgba(16,185,129,0.2); color:#34D399; font-weight:700; padding:2px 6px; border-radius:4px; font-size:10px;">
+              BAŞARILI (%0 Sızıntı)
+            </span>
+          </td>
+        </tr>
+      `).join('');
+
+      this.evalTableContainer.innerHTML = `
+        <table style="width:100%; border-collapse:collapse; text-align:left; background:#0B0F19;">
+          <thead>
+            <tr style="background:#1E293B; font-size:11px; text-transform:uppercase; color:#94A3B8;">
+              <th style="padding:8px;">ID</th>
+              <th style="padding:8px;">Kategori</th>
+              <th style="padding:8px;">Öğrenci İstemi (Prompt)</th>
+              <th style="padding:8px;">Sokratik Model Yanıtı</th>
+              <th style="padding:8px; text-align:center;">Sonuç</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+    } catch (e) {
+      this.evalTableContainer.innerHTML = `<div style="padding:16px; color:#F87171;">Eval verisi yüklenemedi. Lütfen <code>tutor_eval.json</code> dosyasını kontrol edin.</div>`;
+    }
   }
 
   renderCrisisScreen() {

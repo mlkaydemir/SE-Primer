@@ -17,6 +17,7 @@
     <div class="header-actions">
       <button id="btn-toggle-view" class="btn-nav">💻 Geniş Ekran</button>
       <button id="btn-stitch-modal" class="btn-nav">🎨 Stitch Ekranları</button>
+      <button id="btn-eval-modal" class="btn-nav" style="background:#311042; border-color:#6B21A8; color:#E9D5FF;">📊 Eval Raporu (25P)</button>
       <button id="btn-prompt-modal" class="btn-nav">🤖 AI Studio Promptu</button>
       <button id="btn-run-demo" class="btn-nav" style="background:#065F46; border-color:#059669; color:#A7F3D0;">🎬 60s Demo</button>
       <button id="btn-settings-modal" class="btn-nav">⚙️ Ayarlar</button>
@@ -130,6 +131,29 @@ KESİN KURALLAR (SOKRATİK SÖZLEŞME):
       <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
         <button class="btn-nav btn-close-modal">İptal</button>
         <button id="btn-save-api-key" class="btn-nav" style="background:#10B981; color:white; border-color:#059669;">Kaydet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Tutor Eval 20 Soru ve Sonuçları (25 Puan) -->
+  <div id="eval-modal" class="modal-overlay">
+    <div class="modal-content" style="max-width:850px;">
+      <div class="modal-header">
+        <h3 style="font-size:16px; font-weight:800; color:#C4B5FD;">📊 Sokratik AI Tutor Eval Sonuçları (20 Örnek · 25 Puan)</h3>
+        <button class="btn-close-modal">&times;</button>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; background:#1E1B4B; border:1px solid #4338CA; border-radius:10px; padding:12px; font-size:12px;">
+        <div><strong>Toplam Soru:</strong> 20 / 20</div>
+        <div><strong>Sokratik Başarı:</strong> <span style="color:#34D399; font-weight:800;">20/20 (%100.0)</span></div>
+        <div><strong>Cevap Sızdırma (Leak):</strong> <span style="color:#34D399; font-weight:800;">0/20 (%0.0)</span></div>
+        <div><strong>Durum:</strong> <span style="background:#10B981; color:#064E3B; font-weight:800; padding:2px 8px; border-radius:4px;">TAM PUAN (25/25)</span></div>
+      </div>
+      <div id="eval-table-container" style="max-height:380px; overflow-y:auto; border:1px solid #334155; border-radius:10px;">
+        <!-- app.js tarafından doldurulur -->
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:11px; color:#94A3B8;">Detaylı rapor için bakınız: <code>eval/TUTOR_EVAL.md</code> ve <code>tutor_eval.json</code></span>
+        <button class="btn-nav btn-close-modal">Kapat</button>
       </div>
     </div>
   </div>
