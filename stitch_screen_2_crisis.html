@@ -6,50 +6,52 @@
   <title>Stitch Ekran 2: Sahne, Karar ve AI Tutor · SE Primer</title>
   <style>
     :root {
-      --bg: #090D16;
-      --surface: #111827;
-      --surface-border: #1F2937;
-      --accent: #3B82F6;
-      --accent-tutor: #8B5CF6;
-      --text: #F9FAFB;
-      --text-muted: #9CA3AF;
-      --danger: #EF4444;
-      --warning: #F59E0B;
-      --success: #10B981;
+      --bg: #000000;
+      --card: rgba(28, 28, 30, 0.7);
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #2997ff;
+      --text: #f5f5f7;
+      --text-muted: #86868b;
+      --red: #ff453a;
+      --green: #30d158;
+      --purple: #bf5af2;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: #030712; color: var(--text); display: flex; justify-content: center; padding: 20px 10px; }
-    .phone-container { width: 390px; min-height: 844px; background: var(--bg); border: 2px solid #374151; border-radius: 44px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); display: flex; flex-direction: column; position: relative; }
-    .notch { width: 140px; height: 26px; background: #000; margin: 0 auto 8px; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; }
-    .top-telemetry { background: #1F2937; padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 700; border-bottom: 1px solid #374151; }
-    .status-pill { background: rgba(239, 68, 68, 0.2); color: #F87171; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.4); animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-    .content { padding: 12px 16px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-    .crisis-card { background: linear-gradient(180deg, #1E1B4B 0%, #111827 100%); border: 1px solid #4338CA; border-radius: 14px; padding: 12px; }
-    .step-tag { font-size: 10px; font-weight: 800; color: #818CF8; letter-spacing: 0.5px; }
-    .crisis-title { font-size: 16px; font-weight: 800; margin-top: 4px; line-height: 1.3; }
-    .crisis-desc { font-size: 12px; color: #CBD5E1; margin-top: 6px; line-height: 1.4; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; letter-spacing: -0.01em; }
+    body { background: #000000; color: var(--text); display: flex; justify-content: center; padding: 24px 10px; }
+    .phone-container { width: 400px; min-height: 852px; background: var(--bg); border: 4px solid #2c2c2e; border-radius: 54px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 30px 90px rgba(0,0,0,0.95); display: flex; flex-direction: column; position: relative; }
+    .dynamic-island { width: 126px; height: 32px; background: #000; margin: 12px auto 6px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; box-shadow: 0 0 0 1px rgba(255,255,255,0.08); }
+    .top-telemetry { padding: 4px 18px 10px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 500; color: var(--text-muted); }
+    .status-pill { background: rgba(255, 69, 58, 0.12); color: var(--red); padding: 3px 10px; border-radius: 980px; border: 1px solid rgba(255, 69, 58, 0.3); font-weight: 600; }
+    .content { padding: 12px 18px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .crisis-card { background: rgba(30, 30, 34, 0.7); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 20px; padding: 16px; }
+    .step-tag { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+    .crisis-title { font-size: 17px; font-weight: 700; margin-top: 4px; line-height: 1.25; color: #fff; }
+    .crisis-desc { font-size: 12px; color: var(--text-muted); margin-top: 6px; line-height: 1.45; }
     
-    .decision-section { display: flex; flex-direction: column; gap: 8px; }
-    .btn-decision { background: #1F2937; border: 1.5px solid #374151; border-radius: 12px; padding: 12px; color: var(--text); text-align: left; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; gap: 4px; }
-    .btn-decision:hover, .btn-decision.selected { border-color: #3B82F6; background: rgba(59, 130, 246, 0.15); box-shadow: 0 0 10px rgba(59, 130, 246, 0.25); }
-    .btn-decision strong { font-size: 13px; color: #93C5FD; }
-    .btn-decision span { font-size: 11px; color: var(--text-muted); }
+    .decision-section { display: flex; flex-direction: column; gap: 10px; }
+    .btn-decision { background: rgba(36, 36, 38, 0.7); border: 1px solid var(--border); border-radius: 16px; padding: 16px; color: var(--text); text-align: left; cursor: pointer; transition: all 0.25s; display: flex; flex-direction: column; gap: 4px; }
+    .btn-decision:hover, .btn-decision.selected { border-color: var(--accent); background: rgba(41, 151, 255, 0.12); box-shadow: 0 0 0 1px var(--accent); }
+    .btn-decision strong { font-size: 14px; color: #fff; font-weight: 600; }
+    .btn-decision span { font-size: 12px; color: var(--text-muted); }
 
-    .feedback-box { background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10B981; border-radius: 8px; padding: 10px; font-size: 11px; display: flex; flex-direction: column; gap: 4px; }
-    .feedback-title { font-weight: 700; color: #34D399; }
+    .feedback-box { background: linear-gradient(180deg, rgba(48, 209, 88, 0.08) 0%, rgba(28, 28, 30, 0.85) 100%); border: 1px solid rgba(48, 209, 88, 0.3); border-radius: 18px; padding: 14px; font-size: 12px; display: flex; flex-direction: column; gap: 4px; }
+    .feedback-title { font-weight: 700; color: var(--green); text-transform: uppercase; font-size: 10px; letter-spacing: 0.06em; }
 
-    .tutor-panel { background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
-    .tutor-header { display: flex; align-items: center; justify-content: space-between; font-size: 11px; font-weight: 700; color: #C4B5FD; }
-    .tutor-bubble { background: #2E1065; border: 1px solid #6B21A8; border-radius: 10px; padding: 10px; font-size: 12px; line-height: 1.4; color: #F3E8FF; }
-    .tutor-input-box { display: flex; gap: 6px; }
-    .tutor-input { flex: 1; background: #111827; border: 1px solid #4B5563; border-radius: 8px; padding: 8px 10px; color: white; font-size: 11px; outline: none; }
-    .btn-tutor-send { background: #8B5CF6; border: none; border-radius: 8px; color: white; padding: 0 12px; font-size: 11px; font-weight: 600; cursor: pointer; }
+    .tutor-panel { background: linear-gradient(145deg, rgba(41, 151, 255, 0.08), rgba(191, 90, 242, 0.08)); border: 1px solid rgba(191, 90, 242, 0.3); border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .tutor-header { display: flex; align-items: center; justify-content: space-between; font-size: 11px; font-weight: 600; color: #d1b3ff; }
+    .tutor-bubble { background: rgba(18, 18, 20, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 12px; font-size: 12px; line-height: 1.45; color: #f5f5f7; }
+    .tutor-input-box { display: flex; gap: 8px; }
+    .tutor-input { flex: 1; background: rgba(28, 28, 30, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 980px; padding: 10px 14px; color: white; font-size: 12px; outline: none; }
+    .btn-tutor-send { background: linear-gradient(135deg, #af52de, #5e5ce6); border: none; border-radius: 980px; color: white; padding: 0 16px; font-size: 11px; font-weight: 600; cursor: pointer; }
   </style>
 </head>
 <body>
   <div class="phone-container">
-    <div class="notch"></div>
+    <div class="dynamic-island">
+      <span style="font-size:10px; font-weight:600; color:#86868b;">08:00</span>
+      <div style="width:10px; height:10px; background:#000; border-radius:50%;"></div>
+      <span style="font-size:10px; font-weight:600; color:#30d158;">5G</span>
+    </div>
     <div class="top-telemetry">
       <div>⏰ 08:00:14 · Nöbetçi: Backend</div>
       <div class="status-pill">🚨 300 HASTA BEKLİYOR</div>
@@ -64,7 +66,7 @@
       <div class="decision-section">
         <div class="btn-decision selected">
           <strong>A) Eski sürüme geri dön (Rollback v1.4)</strong>
-          <span>Bilinmeyen bug ile vakit kaybetmeden kanıtlanmış stabil sürüme geçiş yap.</span>
+          <span>Bilinmeyen bug ile vakit kaybetmeden stabil sürüme geçiş yap.</span>
         </div>
         <div class="btn-decision">
           <strong>B) Canlıda yama yap (Hotfix directly on Prod)</strong>
@@ -74,21 +76,21 @@
 
       <div class="feedback-box">
         <div class="feedback-title">💡 TEKNİK GERİ BİLDİRİM (Ne Oldu / Neden Oldu?)</div>
-        <div><strong>Ne Oldu:</strong> Kararlı v1.4 tagine rollback pipeline'ı tetiklendi. Trafik eski pod'lara aktarıldı.</div>
-        <div><strong>Neden Oldu:</strong> Bilinmeyen prod hatasını izole etmektense kanıtlanmış koda dönmek MTTR süresini 4 dakikaya düşürdü.</div>
+        <div><strong>Ne Oldu:</strong> Kararlı v1.4 tagine rollback pipeline'ı tetiklendi.</div>
+        <div><strong>Neden Oldu:</strong> Bilinmeyen hatayı ayıklamaktansa kanıtlanmış koda dönmek MTTR'ı 4 dakikaya düşürdü.</div>
       </div>
 
       <!-- AI Tutor Bölümü -->
       <div class="tutor-panel">
         <div class="tutor-header">
-          <span>🔮 AI TUTOR (SOKRATİK DANIŞMAN)</span>
-          <span style="color:#A78BFA; font-weight:normal; font-size:10px;">Cevabı ele vermez</span>
+          <span>🔮 SOKRATİK AI TUTOR</span>
+          <span style="color:#d1b3ff; font-weight:normal; font-size:10px;">Cevabı ele vermez</span>
         </div>
         <div class="tutor-bubble">
           "Geri dönmeden önce dün geceki sürümde veritabanı şemasının (schema migration) değişip değişmediğini nasıl anlarsın? Eğer şema değiştiyse eski koda dönmek veritabanını bozar mı?"
         </div>
         <div class="tutor-input-box">
-          <input type="text" class="tutor-input" placeholder="Tutor'a soru sor (örn: DB riski ne?)..." value="Geri dönersem tablolar silinir mi?">
+          <input type="text" class="tutor-input" value="Geri dönersem tablolar silinir mi?">
           <button class="btn-tutor-send">Sor</button>
         </div>
       </div>
@@ -96,4 +98,3 @@
   </div>
 </body>
 </html>
-

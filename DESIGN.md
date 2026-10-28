@@ -17,35 +17,34 @@
 
 ---
 
-## 2. Tasarım Sistemi ve Tokenlar (Design Tokens)
+## 2. Tasarım Sistemi ve Tokenlar (Apple Pro Design Tokens)
 
-### 2.1. Renk Paleti (Color Tokens)
-| Token Adı | Hex Kodu | Kullanım Alanı | Anlamsal Karşılığı |
+### 2.1. Renk Paleti (Cupertino OLED Dark Palette)
+| Token Adı | Değer | Kullanım Alanı | Anlamsal Karşılığı |
 |---|---|---|---|
-| `--color-bg-canvas` | `#090D16` | Ana arka plan | Gece nöbeti / derin konsantrasyon |
-| `--color-bg-surface` | `#111827` | Kartlar ve modüller | Arayüz yüzeyi |
-| `--color-bg-surface-elevated` | `#1F2937` | Butonlar, modal ve girdi alanları | Etkileşimli katman |
-| `--color-accent-primary` | `#3B82F6` | Birincil butonlar, aktif sekmeler | Güven, teknik netlik |
-| `--color-accent-tutor` | `#8B5CF6` | AI Tutor balonu, Sokratik ipuçları | Bilgelik, pedagoji, Primer kitabı |
-| `--color-status-danger` | `#EF4444` | Kriz göstergesi, KVKK ihlali, süre baskısı | Hata, aciliyet (08:00 çöküşü) |
-| `--color-status-warning` | `#F59E0B` | Süre son 15 saniye, hotfix uyarısı | Dikkat, teknik risk |
-| `--color-status-success` | `#10B981` | İyi Son (Son A), maskeleme başarısı | Sistem ayakta, veri güvende |
-| `--color-text-primary` | `#F9FAFB` | Ana başlıklar, senaryo metni | Yüksek kontrast okunabilirlik |
-| `--color-text-muted` | `#9CA3AF` | Yardımcı metinler, log detayları | İkincil bilgi |
+| `--apple-black` | `#000000` | Saf OLED arka plan | Apple Pro derin kontrast |
+| `--apple-card` | `rgba(28, 28, 30, 0.65)` | Frosted glass kartlar | Apple akrilik yüzey |
+| `--apple-border` | `rgba(255, 255, 255, 0.12)` | Mikro çerçeveler | Fırçalanmış titanyum kenar |
+| `--apple-blue` | `#2997ff` | Birincil aksiyonlar | Apple System Blue |
+| `--apple-purple` | `#bf5af2` | Sokratik AI Tutor | Apple Intelligence / Siri Aurora |
+| `--apple-red` | `#ff453a` | Kriz telemetrisi, 08:00 çöküşü | Apple System Red aciliyet |
+| `--apple-green` | `#30d158` | İyi Son (Son A), kurtarılan hasta | Apple Health / Fitness Green |
+| `--apple-text-primary`| `#f5f5f7` | Başlıklar ve birincil metin | Apple Platinum White |
+| `--apple-text-secondary`| `#86868b` | Alt metinler ve açıklamalar | Apple Space Gray |
 
 ### 2.2. Tipografi (Typography)
-- **Ana Yazı Tipi:** `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`
-- **Monospace Yazı Tipi (Loglar & Kod):** `JetBrains Mono, "Fira Code", monospace`
-- **Ölçekler:**
-  - `Hero Title (Mobil)`: 24px / Bold (Line-height: 1.2)
-  - `Section Title`: 18px / Semi-Bold (Line-height: 1.3)
-  - `Body Text`: 14px / Regular (Line-height: 1.5)
-  - `Caption / Badge`: 11px / Medium (Line-height: 1.4)
-  - `Terminal Log`: 12px / Monospace (Line-height: 1.4)
+- **Ana Yazı Tipi:** `-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif`
+- **Monospace Yazı Tipi:** `"SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`
+- **Ölçekler ve Efektler:**
+  - `Hero Title`: 26px / Bold / Brushed Titanium Gradient (`linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%)`)
+  - `Card Header`: 14px / Semi-Bold (Letter-spacing: -0.015em)
+  - `Body Text`: 13px / Regular (Line-height: 1.45, Color: `#86868b`)
+  - `Apple Pill Badges`: 11px / Medium (Letter-spacing: 0.04em)
 
-### 2.3. Dokunmatik Hedefler ve Spacing
-- Mobil parmak ergonomisi için tüm butonlar **en az 48px yükseklik** ve **en az 12px iç boşluk (padding)** ile tasarlanmıştır.
-- Grid: 8px tabanlı spacing ölçeği (`p-2: 8px`, `p-4: 16px`, `p-6: 24px`).
+### 2.3. Donanım ve Etkileşim Öğeleri
+- **Apple Dynamic Island:** Üst çentik yerine 126x32px boyutunda interaktif kamera/sensör adacığı.
+- **Titanium Bezel:** iPhone 16 Pro referanslı 4px `#2c2c2e` fırçalanmış çerçeve ve yumuşak derin gölge.
+- **Apple Pill CTA:** 980px yuvarlatılmış hap formunda birincil aksiyon butonları.
 
 ---
 

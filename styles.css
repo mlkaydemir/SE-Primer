@@ -1,20 +1,48 @@
-/* styles.css - SE Primer Cyber-Medical Theme */
+/* ==========================================================================
+   SE PRIMER · APPLE PRO DESIGN SYSTEM (Cupertino Premium Theme)
+   Inspired by Apple.com, iOS 18 Dynamic Island, SF Pro & Apple Intelligence
+   ========================================================================== */
+
 :root {
-  --bg-main: #070B14;
-  --bg-card: #0F172A;
-  --bg-surface: #1E293B;
-  --bg-elevated: #334155;
-  --border-color: #1E293B;
-  --border-highlight: #3B82F6;
-  --accent-blue: #3B82F6;
-  --accent-purple: #8B5CF6;
-  --accent-emerald: #10B981;
-  --accent-amber: #F59E0B;
-  --accent-rose: #EF4444;
-  --text-main: #F8FAFC;
-  --text-muted: #94A3B8;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "JetBrains Mono", "SF Mono", Consolas, Menlo, monospace;
+  /* Apple Neutral Dark Palette */
+  --apple-black: #000000;
+  --apple-bg: #000000;
+  --apple-card: rgba(28, 28, 30, 0.65);
+  --apple-card-hover: rgba(44, 44, 46, 0.75);
+  --apple-surface-elevated: rgba(44, 44, 46, 0.6);
+  --apple-border: rgba(255, 255, 255, 0.12);
+  --apple-border-subtle: rgba(255, 255, 255, 0.08);
+  --apple-border-highlight: rgba(255, 255, 255, 0.25);
+
+  /* Apple System Colors */
+  --apple-blue: #2997ff;
+  --apple-blue-hover: #0077ed;
+  --apple-blue-glow: rgba(41, 151, 255, 0.28);
+  --apple-indigo: #5e5ce6;
+  --apple-purple: #bf5af2;
+  --apple-pink: #ff375f;
+  --apple-green: #30d158;
+  --apple-yellow: #ffd60a;
+  --apple-orange: #ff9f0a;
+  --apple-red: #ff453a;
+
+  /* Apple Typography Hierarchy */
+  --apple-text-primary: #f5f5f7;
+  --apple-text-secondary: #86868b;
+  --apple-text-tertiary: #6e6e73;
+
+  /* Fonts */
+  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 980px;
+
+  /* Transitions */
+  --apple-ease: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 * {
@@ -22,51 +50,65 @@
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--bg-main);
-  color: var(--text-main);
-  font-family: var(--font-sans);
+  background: #000000;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(41, 151, 255, 0.12), transparent),
+    radial-gradient(circle 600px at 85% 15%, rgba(191, 90, 242, 0.08), transparent);
+  background-attachment: fixed;
+  color: var(--apple-text-primary);
+  font-family: var(--font-sf);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  letter-spacing: -0.011em;
 }
 
-/* Header & Navigation Bar */
+/* ==========================================================================
+   Apple.com Style Global Navigation Header
+   ========================================================================== */
 header.app-header {
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-color);
-  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--apple-border-subtle);
+  height: 52px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
 }
 
 .brand-section {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .brand-badge {
-  background: linear-gradient(135deg, #2563EB, #7C3AED);
-  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f5f5f7;
   font-size: 11px;
-  font-weight: 800;
-  padding: 4px 8px;
-  border-radius: 6px;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.04em;
 }
 
 .brand-title {
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: -0.3px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .header-actions {
@@ -76,270 +118,354 @@ header.app-header {
 }
 
 .btn-nav {
-  background: var(--bg-surface);
-  border: 1px solid #334155;
-  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--apple-text-primary);
   font-size: 12px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 8px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.2s;
+  transition: all 0.25s var(--apple-ease);
 }
 
 .btn-nav:hover {
-  background: var(--bg-elevated);
-  border-color: #64748B;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-0.5px);
 }
 
 .btn-nav.active {
-  background: #2563EB;
-  border-color: #60A5FA;
-  color: white;
+  background: #f5f5f7;
+  color: #000000;
+  border-color: #ffffff;
+  font-weight: 600;
 }
 
-/* Viewport Shell: Mobile Phone Frame vs Wide Screen */
+/* ==========================================================================
+   Viewport Shell: iPhone 16 Pro Titanium Frame vs Studio Display Wide Mode
+   ========================================================================== */
 main.main-viewport {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 24px 16px;
+  padding: 32px 16px;
 }
 
+/* Apple iPhone Pro Hardware Chassis */
 .frame-mobile {
   width: 100%;
-  max-width: 420px;
-  min-height: 840px;
-  background: #090E17;
-  border: 3px solid #334155;
-  border-radius: 46px;
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  max-width: 412px;
+  min-height: 852px;
+  background: #000000;
+  /* Titanium frame bezel */
+  border: 4px solid #2c2c2e;
+  border-radius: 54px;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 25px 80px -10px rgba(0, 0, 0, 0.95),
+    0 0 40px rgba(41, 151, 255, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.4s var(--apple-ease);
 }
 
 .frame-wide {
   width: 100%;
-  max-width: 820px;
+  max-width: 860px;
   min-height: auto;
+  border-radius: 28px;
+  border: 1px solid var(--apple-border);
+  background: rgba(18, 18, 20, 0.7);
+  backdrop-filter: blur(30px);
+  padding: 16px;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   Apple Dynamic Island
+   ========================================================================== */
+.dynamic-island {
+  width: 126px;
+  height: 32px;
+  background: #000000;
+  margin: 12px auto 6px;
   border-radius: 20px;
-  border: 1px solid var(--border-color);
-  background: #090E17;
-  padding: 10px;
-}
-
-/* Mobile Notch & Speaker */
-.notch-bar {
-  width: 140px;
-  height: 24px;
-  background: #000;
-  margin: 0 auto;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 8px;
-  z-index: 10;
+  justify-content: space-between;
+  padding: 0 12px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  z-index: 20;
+  transition: all 0.3s var(--apple-ease);
 }
 
-.speaker {
-  width: 40px;
-  height: 4px;
-  background: #222;
-  border-radius: 2px;
+.dynamic-island:hover {
+  width: 210px;
+  box-shadow: 0 0 0 1px rgba(41, 151, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
-.camera {
-  width: 8px;
-  height: 8px;
-  background: #111;
+.island-camera {
+  width: 11px;
+  height: 11px;
+  background: radial-gradient(circle at 40% 40%, #1c2738 0%, #050b14 70%, #000 100%);
   border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: inline-block;
 }
 
-/* Telemetry Status Bar */
+.island-sensor {
+  width: 6px;
+  height: 6px;
+  background: #0d1117;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.island-pill-text {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--apple-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Apple Telemetry & Status Bar
+   ========================================================================== */
 .telemetry-bar {
-  background: #0F172A;
-  border-bottom: 1px solid #1E293B;
-  padding: 8px 16px;
+  background: transparent;
+  padding: 6px 20px 10px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--apple-text-secondary);
 }
 
 .telemetry-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .pulse-badge {
-  background: rgba(239, 68, 68, 0.2);
-  color: #F87171;
-  padding: 2px 8px;
-  border-radius: 6px;
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  font-size: 10px;
-  animation: pulse-red 2s infinite ease-in-out;
+  background: rgba(255, 69, 58, 0.12);
+  color: var(--apple-red);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.02em;
 }
 
-@keyframes pulse-red {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(0.97); }
-}
-
-/* Stress Timer Bar (Senior Mode) */
-.stress-timer-container {
-  background: #1E293B;
+.pulse-badge::before {
+  content: "";
+  width: 6px;
   height: 6px;
+  background: var(--apple-red);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px var(--apple-red);
+  animation: apple-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes apple-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Senior Stress Timer (Apple Watch Workout Progress Bar) */
+.stress-timer-container {
+  background: rgba(255, 255, 255, 0.08);
+  height: 4px;
   width: 100%;
   overflow: hidden;
 }
 
 .stress-timer-fill {
-  background: linear-gradient(90deg, #10B981, #F59E0B, #EF4444);
+  background: linear-gradient(90deg, #30d158, #ffd60a, #ff453a);
   height: 100%;
   width: 100%;
   transition: width 1s linear;
+  box-shadow: 0 0 10px rgba(255, 69, 58, 0.5);
 }
 
-/* Content Container */
+/* ==========================================================================
+   Screen Content & Cupertino Glass Cards
+   ========================================================================== */
 .screen-container {
-  padding: 16px;
+  padding: 14px 18px 24px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   flex: 1;
 }
 
-/* Cards & Typography */
+/* Apple Frosted Glass Card */
 .card-glass {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 16px;
+  background: rgba(28, 28, 30, 0.68);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--apple-border);
+  border-radius: 20px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.25s var(--apple-ease);
 }
 
 .card-title {
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #94A3B8;
+  letter-spacing: 0.06em;
+  color: var(--apple-text-secondary);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Interactive Option Grids */
+/* Typography Enhancements */
+h1.apple-headline {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  background: linear-gradient(180deg, #FFFFFF 0%, #CCCCCC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p.apple-sub {
+  font-size: 13px;
+  color: var(--apple-text-secondary);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Interactive Selectable Chips (iOS Settings / Picker Style)
+   ========================================================================== */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 
 .selectable-chip {
-  background: #1E293B;
-  border: 1.5px solid #334155;
-  border-radius: 12px;
-  padding: 12px 10px;
-  color: var(--text-main);
+  background: rgba(44, 44, 46, 0.45);
+  border: 1px solid var(--apple-border);
+  border-radius: 16px;
+  padding: 14px 12px;
+  color: var(--apple-text-primary);
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s var(--apple-ease);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  position: relative;
 }
 
 .selectable-chip:hover {
-  background: #273549;
-  border-color: #64748B;
+  background: rgba(58, 58, 60, 0.6);
+  border-color: rgba(255, 255, 255, 0.22);
   transform: translateY(-1px);
 }
 
 .selectable-chip.selected {
-  background: rgba(37, 99, 235, 0.18);
-  border-color: #3B82F6;
-  box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
+  background: rgba(41, 151, 255, 0.14);
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 1px var(--apple-blue), 0 6px 20px var(--apple-blue-glow);
 }
 
 .selectable-chip strong {
-  font-size: 12px;
-  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
 }
 
 .selectable-chip span {
-  font-size: 10px;
-  color: var(--text-muted);
-  line-height: 1.3;
+  font-size: 11px;
+  color: var(--apple-text-secondary);
+  line-height: 1.35;
 }
 
-/* Decision Action Buttons */
+/* ==========================================================================
+   Decision Buttons (Apple Action Card Style)
+   ========================================================================== */
 .btn-decision {
-  background: #1E293B;
-  border: 1.5px solid #334155;
-  border-radius: 14px;
-  padding: 14px;
-  color: var(--text-main);
+  background: rgba(36, 36, 38, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--apple-border);
+  border-radius: 16px;
+  padding: 16px;
+  color: var(--apple-text-primary);
   text-align: left;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s var(--apple-ease);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn-decision:hover {
-  border-color: #3B82F6;
-  background: #243247;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px -4px rgba(59, 130, 246, 0.3);
+  background: rgba(50, 50, 53, 0.85);
+  border-color: var(--apple-blue);
+  transform: scale(1.01);
+  box-shadow: 0 8px 24px var(--apple-blue-glow);
 }
 
 .btn-decision.active-choice {
-  border-color: #10B981;
-  background: rgba(16, 185, 129, 0.15);
-  box-shadow: 0 0 18px rgba(16, 185, 129, 0.4);
+  background: rgba(48, 209, 88, 0.12);
+  border-color: var(--apple-green);
+  box-shadow: 0 0 0 1px var(--apple-green), 0 8px 24px rgba(48, 209, 88, 0.25);
 }
 
 .btn-decision .choice-header {
-  font-size: 13px;
-  font-weight: 700;
-  color: #93C5FD;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.015em;
 }
 
 .btn-decision .choice-desc {
-  font-size: 11px;
-  color: #CBD5E1;
+  font-size: 12px;
+  color: var(--apple-text-secondary);
   line-height: 1.4;
 }
 
-/* Feedback Panel (Ne Oldu / Neden Oldu) */
+/* ==========================================================================
+   Technical Feedback Panel (What & Why)
+   ========================================================================== */
 .feedback-panel {
-  background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.9) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 14px;
-  padding: 14px;
+  background: linear-gradient(180deg, rgba(48, 209, 88, 0.08) 0%, rgba(28, 28, 30, 0.85) 100%);
+  border: 1px solid rgba(48, 209, 88, 0.3);
+  border-radius: 18px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  animation: fadeIn 0.3s ease-out;
+  animation: appleFadeIn 0.3s var(--apple-ease);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes fadeIn {
+@keyframes appleFadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -348,26 +474,45 @@ main.main-viewport {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 11px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .feedback-label {
-  font-weight: 800;
-  color: #34D399;
+  font-weight: 700;
+  color: var(--apple-green);
   text-transform: uppercase;
   font-size: 10px;
+  letter-spacing: 0.06em;
 }
 
-/* Socratic AI Tutor Dock */
+/* ==========================================================================
+   Apple Intelligence Socratic AI Tutor Dock (Siri Aurora Aesthetic)
+   ========================================================================== */
 .tutor-dock {
-  background: linear-gradient(180deg, rgba(139, 92, 246, 0.12) 0%, rgba(15, 23, 42, 0.95) 100%);
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  border-radius: 16px;
-  padding: 14px;
+  background: linear-gradient(145deg, rgba(41, 151, 255, 0.08) 0%, rgba(191, 90, 242, 0.08) 50%, rgba(28, 28, 30, 0.9) 100%);
+  border: 1px solid rgba(191, 90, 242, 0.3);
+  border-radius: 22px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(191, 90, 242, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow orb behind Siri */
+.tutor-dock::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(191, 90, 242, 0.3) 0%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
 }
 
 .tutor-header {
@@ -375,18 +520,20 @@ main.main-viewport {
   justify-content: space-between;
   align-items: center;
   font-size: 11px;
-  font-weight: 700;
-  color: #C4B5FD;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #d1b3ff;
 }
 
 .tutor-chat-box {
-  background: #19142D;
-  border: 1px solid #4C1D95;
-  border-radius: 12px;
-  padding: 12px;
+  background: rgba(18, 18, 20, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   max-height: 200px;
   overflow-y: auto;
 }
@@ -394,85 +541,98 @@ main.main-viewport {
 .tutor-bubble {
   font-size: 12px;
   line-height: 1.5;
-  color: #F3E8FF;
+  color: #f5f5f7;
 }
 
 .quick-prompts-row {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   overflow-x: auto;
   padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.quick-prompts-row::-webkit-scrollbar {
+  display: none;
 }
 
 .quick-prompt-btn {
-  background: #2E1065;
-  border: 1px solid #6B21A8;
-  color: #DDD6FE;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e5e5ea;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
   white-space: nowrap;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s var(--apple-ease);
 }
 
 .quick-prompt-btn:hover {
-  background: #4C1D95;
-  color: white;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .tutor-input-row {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .tutor-input-field {
   flex: 1;
-  background: #0B0F19;
-  border: 1px solid #4B5563;
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 11px;
-  color: white;
+  background: rgba(28, 28, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  font-size: 12px;
+  color: #ffffff;
   outline: none;
+  font-family: var(--font-sf);
+  transition: all 0.2s var(--apple-ease);
 }
 
 .tutor-input-field:focus {
-  border-color: #8B5CF6;
-  box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+  border-color: var(--apple-purple);
+  box-shadow: 0 0 0 1px var(--apple-purple), 0 0 16px rgba(191, 90, 242, 0.35);
+  background: rgba(36, 36, 38, 0.95);
 }
 
 .btn-tutor-submit {
-  background: linear-gradient(135deg, #7C3AED, #6D28D9);
+  background: linear-gradient(135deg, #af52de, #5e5ce6);
   border: none;
-  color: white;
-  padding: 0 14px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 700;
+  color: #ffffff;
+  padding: 0 18px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s var(--apple-ease);
+  box-shadow: 0 4px 12px rgba(175, 82, 222, 0.3);
 }
 
 .btn-tutor-submit:hover {
-  filter: brightness(1.15);
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(175, 82, 222, 0.45);
 }
 
-/* Primary Action CTA */
+/* ==========================================================================
+   Apple Primary Pill Action CTA Button
+   ========================================================================== */
 .btn-primary-cta {
-  background: linear-gradient(135deg, #10B981, #059669);
-  color: white;
+  background: var(--apple-blue);
+  color: #ffffff;
   border: none;
-  border-radius: 14px;
-  padding: 16px;
+  border-radius: var(--radius-pill);
+  padding: 16px 24px;
   font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   cursor: pointer;
   text-align: center;
-  box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
-  transition: all 0.2s;
+  box-shadow: 0 8px 24px var(--apple-blue-glow);
+  transition: all 0.25s var(--apple-ease);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -480,36 +640,47 @@ main.main-viewport {
 }
 
 .btn-primary-cta:hover {
-  filter: brightness(1.1);
+  background: var(--apple-blue-hover);
   transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(41, 151, 255, 0.4);
 }
 
-/* Modal Overlay */
+.btn-primary-cta:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Apple Modal Sheets (iOS Bottom Sheet / Frosted Glass Sheet)
+   ========================================================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 100;
-  padding: 16px;
+  z-index: 200;
+  padding: 20px;
+  animation: appleFadeIn 0.25s var(--apple-ease);
 }
 
 .modal-content {
-  background: #0F172A;
-  border: 1px solid #334155;
-  border-radius: 20px;
-  max-width: 580px;
+  background: rgba(30, 30, 32, 0.88);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  border: 1px solid var(--apple-border);
+  border-radius: 28px;
+  max-width: 600px;
   width: 100%;
   max-height: 85vh;
   overflow-y: auto;
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+  gap: 18px;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .modal-header {
@@ -519,22 +690,36 @@ main.main-viewport {
 }
 
 .btn-close-modal {
-  background: none;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
-  color: #94A3B8;
-  font-size: 20px;
+  color: var(--apple-text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 16px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
 }
 
-/* Telemetry Dashboard Mini Grid */
+.btn-close-modal:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Apple Watch / Health Dashboard Mini Grid
+   ========================================================================== */
 .telemetry-mini-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  background: #0B0F19;
-  border-radius: 10px;
-  padding: 8px;
-  border: 1px solid #1E293B;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .telemetry-stat {
@@ -542,14 +727,16 @@ main.main-viewport {
 }
 
 .telemetry-stat .num {
-  font-size: 13px;
-  font-weight: 800;
-  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-sf);
+  letter-spacing: -0.02em;
 }
 
 .telemetry-stat .lbl {
   font-size: 9px;
-  color: var(--text-muted);
+  color: var(--apple-text-secondary);
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
 }
-

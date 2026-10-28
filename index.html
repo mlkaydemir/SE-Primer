@@ -8,29 +8,33 @@
 </head>
 <body>
 
-  <!-- Üst Gezinme ve Kontrol Çubuğu -->
+  <!-- Üst Gezinme ve Kontrol Çubuğu (Apple Global Nav Style) -->
   <header class="app-header">
     <div class="brand-section">
       <span class="brand-badge">YZM301</span>
-      <div class="brand-title">SE Primer <small style="font-size:11px; font-weight:normal; color:#94A3B8;">v1.0</small></div>
+      <div class="brand-title">SE Primer <span style="font-size:11px; font-weight:400; color:#86868b;">Pro</span></div>
     </div>
     <div class="header-actions">
       <button id="btn-toggle-view" class="btn-nav">💻 Geniş Ekran</button>
-      <button id="btn-stitch-modal" class="btn-nav">🎨 Stitch Ekranları</button>
-      <button id="btn-eval-modal" class="btn-nav" style="background:#311042; border-color:#6B21A8; color:#E9D5FF;">📊 Eval Raporu (25P)</button>
-      <button id="btn-prompt-modal" class="btn-nav">🤖 AI Studio Promptu</button>
-      <button id="btn-run-demo" class="btn-nav" style="background:#065F46; border-color:#059669; color:#A7F3D0;">🎬 60s Demo</button>
-      <button id="btn-settings-modal" class="btn-nav">⚙️ Ayarlar</button>
+      <button id="btn-stitch-modal" class="btn-nav">🎨 Stitch</button>
+      <button id="btn-eval-modal" class="btn-nav" style="background:rgba(191,90,242,0.12); border-color:rgba(191,90,242,0.25); color:#E9D5FF;">📊 Eval (25P)</button>
+      <button id="btn-prompt-modal" class="btn-nav">🤖 AI Studio</button>
+      <button id="btn-run-demo" class="btn-nav" style="background:rgba(48,209,88,0.14); border-color:rgba(48,209,88,0.3); color:#30D158;">🎬 60s Demo</button>
+      <button id="btn-settings-modal" class="btn-nav">⚙️</button>
     </div>
   </header>
 
   <!-- Ana Görünüm Alanı -->
   <main class="main-viewport">
     <div id="app-frame" class="frame-mobile">
-      <!-- Mobil Çentik & Hoparlör -->
-      <div class="notch-bar">
-        <div class="speaker"></div>
-        <div class="camera"></div>
+      <!-- Apple Dynamic Island -->
+      <div class="dynamic-island">
+        <span class="island-pill-text">08:00</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <div class="island-camera"></div>
+          <div class="island-sensor"></div>
+        </div>
+        <span class="island-pill-text" style="color:var(--apple-green);">5G</span>
       </div>
 
       <!-- Telemetri Çubuğu (Kriz anında aktif) -->

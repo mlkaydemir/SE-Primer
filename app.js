@@ -129,29 +129,29 @@ class SEPrimerApp {
     const isJunior = level === 'junior';
 
     this.screenContainer.innerHTML = `
-      <div style="display:flex; flex-direction:column; gap:6px;">
-        <span style="font-size:10px; color:#60A5FA; font-weight:800; letter-spacing:0.5px;">YZM301 · SE PRIMER · 1. HAFTA</span>
-        <h1 style="font-size:22px; font-weight:800; line-height:1.2;">SE Primer</h1>
-        <p style="font-size:12px; color:var(--text-muted); line-height:1.5;">
-          Kişiye uyum sağlayan kitap, bu kez yazılım mühendisi için: oyuncu karar verir, uygulama o kararın teknik sonucunu gösterir.
+      <div style="display:flex; flex-direction:column; gap:4px; margin-top:2px;">
+        <span style="font-size:11px; color:var(--apple-blue); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">YZM301 · SE Primer</span>
+        <h1 class="apple-headline">SE Primer</h1>
+        <p class="apple-sub">
+          Kişiye uyum sağlayan kitap, yazılım mühendisi için: oyuncu karar verir, sistem teknik sonucunu gösterir.
         </p>
       </div>
 
-      <div style="background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(59,130,246,0.12)); border:1px dashed rgba(139,92,246,0.4); border-radius:12px; padding:12px; font-size:11px; color:#C4B5FD;">
-        ⚡ <strong>Kriz Başlangıcı:</strong> "08:00, randevu sistemi çöktü. Nöbetçi sensin. Dün gece yeni sürüm çıktı. 300 hasta poliklinik kapısında bekliyor."
+      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:12px 14px; font-size:12px; color:#f5f5f7; backdrop-filter:blur(10px);">
+        <strong style="color:var(--apple-orange);">⚡ 08:00 Kriz Başlangıcı:</strong> Randevu sistemi çöktü. Dün gece yeni sürüm çıktı. 300 hasta poliklinik kapısında bekliyor.
       </div>
 
       <!-- Soru 1: Seviye -->
       <div class="card-glass">
-        <span class="card-title">1. Seviye Seçimi (Deneyim)</span>
+        <span class="card-title">1. Deneyim Seviyesi</span>
         <div class="grid-2">
           <div class="selectable-chip ${level === 'junior' ? 'selected' : ''}" data-type="level" data-val="junior">
             <strong>🌱 Yeni Başladım (Jr)</strong>
-            <span>Sokratik ipuçları açık, süre kısıtı yok, öğretici mod.</span>
+            <span>Sokratik ipuçları açık, süre kısıtı yok.</span>
           </div>
           <div class="selectable-chip ${level === 'senior' ? 'selected' : ''}" data-type="level" data-val="senior">
             <strong>⚡ Deneyimliyim (Sr)</strong>
-            <span>60 sn süre baskısı! Gerçek kriz stresi altında karar ver.</span>
+            <span>60 sn süre baskısı ve stres sayacı.</span>
           </div>
         </div>
       </div>
@@ -159,43 +159,43 @@ class SEPrimerApp {
       <!-- Soru 2: Rol -->
       <div class="card-glass">
         <span class="card-title">2. Nöbetçi Rolü</span>
-        <div style="display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
           <div class="selectable-chip ${role === 'backend' ? 'selected' : ''}" data-type="role" data-val="backend">
             <strong>🛡️ Backend Mühendisi</strong>
-            <span>Veritabanı transactionları, connection pool ve API stabilitesi.</span>
+            <span>Transaction bütünlüğü, connection pool ve DB stabilitesi.</span>
           </div>
           <div class="selectable-chip ${role === 'devops' ? 'selected' : ''}" data-type="role" data-val="devops">
             <strong>🚀 DevOps & SRE</strong>
-            <span>Kubernetes pod durumu, rollback pipeline ve MTTR yönetimi.</span>
+            <span>Kubernetes podları, rollback pipeline'ı ve MTTR.</span>
           </div>
           <div class="selectable-chip ${role === 'fullstack' ? 'selected' : ''}" data-type="role" data-val="fullstack">
             <strong>💻 Fullstack Geliştirici</strong>
-            <span>Kullanıcı akışı, hasta kuyruğu ve uçtan uca hata yönetimi.</span>
+            <span>Hasta randevu akışı ve uçtan uca hata yönetimi.</span>
           </div>
         </div>
       </div>
 
       <!-- Soru 3: Hedef -->
       <div class="card-glass">
-        <span class="card-title">3. Öncelikli Kriz Hedefin</span>
+        <span class="card-title">3. Öncelikli Kriz Hedefi</span>
         <div class="grid-2">
           <div class="selectable-chip ${goal === 'reliability' ? 'selected' : ''}" data-type="goal" data-val="reliability">
-            <strong>🔒 Sistem Güvenilirliği</strong>
-            <span>En az risk, tam veri koruması.</span>
+            <strong>🔒 Güvenilirlik</strong>
+            <span>Minimum risk, %100 veri koruması.</span>
           </div>
           <div class="selectable-chip ${goal === 'speed' ? 'selected' : ''}" data-type="goal" data-val="speed">
-            <strong>⚡ Maksimum Hız (MTTR)</strong>
-            <span>Randevuları hemen açmak.</span>
+            <strong>⚡ Hız (MTTR)</strong>
+            <span>Randevuları anında açmak.</span>
           </div>
         </div>
       </div>
 
-      <div style="font-size:11px; color:#A7F3D0; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.25); border-radius:10px; padding:10px;">
-        ${isJunior ? '💡 <strong>Junior Modu Seçildi:</strong> Kararlarda AI Tutor her adımda hazır rehber ipuçları sunacaktır.' : '⚠️ <strong>Senior Modu Seçildi:</strong> Her karar için 60 saniyelik stres zamanlayıcısı devrede olacaktır!'}
+      <div style="font-size:12px; color:${isJunior ? 'var(--apple-green)' : 'var(--apple-orange)'}; background:${isJunior ? 'rgba(48,209,88,0.1)' : 'rgba(255,159,10,0.1)'}; border:1px solid ${isJunior ? 'rgba(48,209,88,0.25)' : 'rgba(255,159,10,0.25)'}; border-radius:14px; padding:10px 14px;">
+        ${isJunior ? '💡 <strong>Junior Modu:</strong> AI Tutor her adımda hazır rehber ipuçlarıyla eşlik eder.' : '⚠️ <strong>Senior Modu:</strong> 60 saniyelik görsel ve sesli stres sayacı devrededir!'}
       </div>
 
       <button id="btn-start-crisis" class="btn-primary-cta" style="margin-top:auto;">
-        NÖBETİ DEVRAL · KRİZE BAŞLA (08:00) 🚨
+        Nöbeti Devral · Krize Başla (08:00) ➔
       </button>
     `;
 
@@ -370,38 +370,38 @@ class SEPrimerApp {
 
     this.screenContainer.innerHTML = `
       <!-- Kriz Kartı -->
-      <div class="card-glass" style="background:linear-gradient(180deg, #1E1B4B 0%, #0F172A 100%); border-color:#4338CA;">
+      <div class="card-glass" style="background:rgba(30,30,34,0.7); border-color:rgba(255,255,255,0.12);">
         <div class="card-title">
-          <span style="color:#818CF8;">${step.category}</span>
-          <span style="font-size:10px; color:#A5B4FC;">ADIM ${this.state.currentStepIndex + 1} / 3</span>
+          <span style="color:var(--apple-blue); font-weight:600;">${step.category}</span>
+          <span style="font-size:10px; color:var(--apple-text-secondary);">ADIM ${this.state.currentStepIndex + 1} / 3</span>
         </div>
-        <h2 style="font-size:16px; font-weight:800; line-height:1.3;">${step.title}</h2>
-        <p style="font-size:11px; color:#CBD5E1; line-height:1.4;">${step.context}</p>
+        <h2 style="font-size:17px; font-weight:700; line-height:1.25; color:#ffffff; letter-spacing:-0.02em;">${step.title}</h2>
+        <p style="font-size:12px; color:var(--apple-text-secondary); line-height:1.45;">${step.context}</p>
         
-        <!-- Canlı Telemetri Paneli -->
+        <!-- Canlı Telemetri Paneli (Apple Health Style) -->
         <div class="telemetry-mini-grid">
           <div class="telemetry-stat">
-            <div class="num" style="color:#EF4444;">${this.state.telemetry.waitingPatients}</div>
+            <div class="num" style="color:var(--apple-red);">${this.state.telemetry.waitingPatients}</div>
             <div class="lbl">Bekleyen</div>
           </div>
           <div class="telemetry-stat">
-            <div class="num" style="color:#F59E0B;">${this.state.telemetry.errorRate}</div>
-            <div class="lbl">Hata Oranı</div>
+            <div class="num" style="color:var(--apple-orange);">${this.state.telemetry.errorRate}</div>
+            <div class="lbl">Hata</div>
           </div>
           <div class="telemetry-stat">
-            <div class="num" style="color:#60A5FA;">${this.state.telemetry.cpuLoad}</div>
-            <div class="lbl">CPU Yükü</div>
+            <div class="num" style="color:var(--apple-blue);">${this.state.telemetry.cpuLoad}</div>
+            <div class="lbl">CPU</div>
           </div>
           <div class="telemetry-stat">
-            <div class="num" style="color:#A78BFA;">${this.state.telemetry.dbPool}</div>
+            <div class="num" style="color:var(--apple-purple);">${this.state.telemetry.dbPool}</div>
             <div class="lbl">DB Havuzu</div>
           </div>
         </div>
       </div>
 
       <!-- Karar Seçenekleri -->
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <span style="font-size:10px; font-weight:700; color:#94A3B8; text-transform:uppercase;">Seçenekler:</span>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <span style="font-size:11px; font-weight:600; color:var(--apple-text-secondary); text-transform:uppercase; letter-spacing:0.04em;">Mühendislik Kararı:</span>
         ${optionsHtml}
       </div>
 
@@ -410,16 +410,19 @@ class SEPrimerApp {
 
       <!-- Sonraki Adım Butonu (Seçim yapıldıysa görünür) -->
       ${this.state.currentChoice ? `
-        <button id="btn-next-step" class="btn-primary-cta" style="padding:12px;">
-          ${this.state.currentStepIndex < 2 ? 'SONRAKİ KARARA İLERLE ➔' : 'KRİZ SONUCUNU VE RAPORU GÖR 🏆'}
+        <button id="btn-next-step" class="btn-primary-cta">
+          ${this.state.currentStepIndex < 2 ? 'Sonraki Karara İlerle ➔' : 'Kriz Sonucunu ve Raporu Gör 🏆'}
         </button>
       ` : ''}
 
-      <!-- Sokratik AI Tutor Paneli -->
+      <!-- Sokratik AI Tutor Paneli (Apple Intelligence / Siri Glow) -->
       <div class="tutor-dock">
         <div class="tutor-header">
-          <span>🔮 AI TUTOR (SOKRATİK DANIŞMAN)</span>
-          <span style="font-size:9px; color:#A78BFA; font-weight:normal;">Cevabı ele vermez · İpucu sorar</span>
+          <span style="display:flex; align-items:center; gap:6px;">
+            <span style="width:8px; height:8px; border-radius:50%; background:var(--apple-purple); box-shadow:0 0 8px var(--apple-purple);"></span>
+            Sokratik AI Tutor · SE Primer
+          </span>
+          <span style="font-size:10px; color:var(--apple-text-secondary); font-weight:normal;">Cevabı ele vermez</span>
         </div>
         
         <div class="tutor-chat-box" id="tutor-chat-box">
@@ -554,57 +557,57 @@ class SEPrimerApp {
     `).join('');
 
     this.screenContainer.innerHTML = `
-      <div style="display:flex; flex-direction:column; gap:6px;">
-        <span style="font-size:10px; color:#10B981; font-weight:800; letter-spacing:0.5px;">YZM301 · SİMÜLASYON RAPORU</span>
-        <div style="background: ${outcome.type === 'SUCCESS' ? 'linear-gradient(180deg, #064E3B 0%, #0F172A 100%)' : 'linear-gradient(180deg, #7F1D1D 0%, #0F172A 100%)'}; border:1.5px solid ${outcome.type === 'SUCCESS' ? '#059669' : '#DC2626'}; border-radius:16px; padding:16px; text-align:center;">
-          <span style="display:inline-block; background:${outcome.type === 'SUCCESS' ? '#10B981' : '#EF4444'}; color:${outcome.type === 'SUCCESS' ? '#064E3B' : '#FFF'}; font-size:11px; font-weight:800; padding:4px 10px; border-radius:100px; text-transform:uppercase; margin-bottom:8px;">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <span style="font-size:11px; color:${outcome.type === 'SUCCESS' ? 'var(--apple-green)' : 'var(--apple-red)'}; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">YZM301 · Post-Mortem Raporu</span>
+        <div style="background: ${outcome.type === 'SUCCESS' ? 'linear-gradient(180deg, rgba(48, 209, 88, 0.15) 0%, rgba(28, 28, 30, 0.85) 100%)' : 'linear-gradient(180deg, rgba(255, 69, 58, 0.15) 0%, rgba(28, 28, 30, 0.85) 100%)'}; border:1px solid ${outcome.type === 'SUCCESS' ? 'rgba(48, 209, 88, 0.4)' : 'rgba(255, 69, 58, 0.4)'}; border-radius:22px; padding:18px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+          <span style="display:inline-block; background:${outcome.type === 'SUCCESS' ? 'var(--apple-green)' : 'var(--apple-red)'}; color:${outcome.type === 'SUCCESS' ? '#000000' : '#ffffff'}; font-size:11px; font-weight:700; padding:4px 12px; border-radius:var(--radius-pill); text-transform:uppercase; margin-bottom:10px; letter-spacing:0.03em;">
             ${outcome.badge}
           </span>
-          <h2 style="font-size:18px; font-weight:800;">${outcome.title}</h2>
-          <p style="font-size:12px; color:#D1D5DB; margin-top:6px; line-height:1.4;">${outcome.headline}</p>
+          <h2 style="font-size:20px; font-weight:700; letter-spacing:-0.02em; color:#ffffff;">${outcome.title}</h2>
+          <p style="font-size:13px; color:var(--apple-text-secondary); margin-top:6px; line-height:1.45;">${outcome.headline}</p>
         </div>
       </div>
 
-      <!-- KPI Metrikleri -->
+      <!-- KPI Metrikleri (Apple Health Style) -->
       <div class="grid-2">
-        <div class="card-glass" style="padding:10px; text-align:center;">
-          <div style="font-size:16px; font-weight:800; color:#34D399;">${outcome.metrics.mttr}</div>
-          <div style="font-size:10px; color:var(--text-muted); text-transform:uppercase;">MTTR (Çözüm Süresi)</div>
+        <div class="card-glass" style="padding:12px; text-align:center;">
+          <div style="font-size:17px; font-weight:700; color:var(--apple-green);">${outcome.metrics.mttr}</div>
+          <div style="font-size:10px; color:var(--apple-text-secondary); text-transform:uppercase; letter-spacing:0.04em;">MTTR (Çözüm)</div>
         </div>
-        <div class="card-glass" style="padding:10px; text-align:center;">
-          <div style="font-size:16px; font-weight:800; color:#60A5FA;">${outcome.metrics.servedPatients}</div>
-          <div style="font-size:10px; color:var(--text-muted); text-transform:uppercase;">Kurtarılan Hasta</div>
+        <div class="card-glass" style="padding:12px; text-align:center;">
+          <div style="font-size:17px; font-weight:700; color:var(--apple-blue);">${outcome.metrics.servedPatients}</div>
+          <div style="font-size:10px; color:var(--apple-text-secondary); text-transform:uppercase; letter-spacing:0.04em;">Kurtarılan Hasta</div>
         </div>
-        <div class="card-glass" style="padding:10px; text-align:center;">
-          <div style="font-size:16px; font-weight:800; color:#A78BFA;">${outcome.metrics.kvkkScore}</div>
-          <div style="font-size:10px; color:var(--text-muted); text-transform:uppercase;">KVKK Uyum Skoru</div>
+        <div class="card-glass" style="padding:12px; text-align:center;">
+          <div style="font-size:17px; font-weight:700; color:var(--apple-purple);">${outcome.metrics.kvkkScore}</div>
+          <div style="font-size:10px; color:var(--apple-text-secondary); text-transform:uppercase; letter-spacing:0.04em;">KVKK Uyum Skoru</div>
         </div>
-        <div class="card-glass" style="padding:10px; text-align:center;">
-          <div style="font-size:16px; font-weight:800; color:#FBBF24;">${outcome.metrics.penaltyRisk}</div>
-          <div style="font-size:10px; color:var(--text-muted); text-transform:uppercase;">Hukuki Yaptırım</div>
+        <div class="card-glass" style="padding:12px; text-align:center;">
+          <div style="font-size:17px; font-weight:700; color:var(--apple-yellow);">${outcome.metrics.penaltyRisk}</div>
+          <div style="font-size:10px; color:var(--apple-text-secondary); text-transform:uppercase; letter-spacing:0.04em;">Yasal Yaptırım</div>
         </div>
       </div>
 
       <!-- Kararların Zaman Çizelgesi -->
       <div class="card-glass">
         <span class="card-title">Seçtiğin Mühendislik Kararları</span>
-        <div style="display:flex; flex-direction:column; gap:6px; font-size:11px;">
-          <div>🔹 <strong>Karar 1 (Mimari):</strong> ${choices[0] === 'A' ? 'A) Eski Sürüme Geri Dön (Rollback)' : 'B) Canlıda Yama Yap (Hotfix)'}</div>
-          <div>🔹 <strong>Karar 2 (Test):</strong> ${choices[1] === 'A' ? 'A) Önce Kısa Test Koş (Smoke Test)' : 'B) Hemen Yayına Al (Direct Deploy)'}</div>
-          <div>🔹 <strong>Karar 3 (KVKK):</strong> ${choices[2] === 'A' ? 'A) Logları Maskele' : 'B) Ekibe Olduğu Gibi At (Ham Log)'}</div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:12px;">
+          <div><strong style="color:var(--apple-blue);">1. Mimari:</strong> ${choices[0] === 'A' ? 'A) Rollback (Stabil v1.4)' : 'B) Canlıda Hotfix'}</div>
+          <div><strong style="color:var(--apple-blue);">2. Test:</strong> ${choices[1] === 'A' ? 'A) 90s Smoke Test' : 'B) Doğrudan Yayına Al'}</div>
+          <div><strong style="color:var(--apple-blue);">3. KVKK:</strong> ${choices[2] === 'A' ? 'A) Logları Maskele' : 'B) Ham Logu Ekibe At'}</div>
         </div>
       </div>
 
       <!-- Post-Mortem -->
       <div class="card-glass">
-        <span class="card-title">Mühendislik Post-Mortem Değerlendirmesi</span>
-        <ul style="font-size:11px; color:#CBD5E1; line-height:1.5; padding-left:16px;">
+        <span class="card-title">Mühendislik Post-Mortem Özeti</span>
+        <ul style="font-size:12px; color:var(--apple-text-secondary); line-height:1.5; padding-left:16px;">
           ${postMortemHtml}
         </ul>
       </div>
 
-      <button id="btn-restart-game" class="btn-primary-cta" style="background:#374151; box-shadow:none; margin-top:auto;">
-        🔄 FARKLI BİR STRATEJİYLE YENİDEN OYNA
+      <button id="btn-restart-game" class="btn-nav" style="padding:14px 20px; font-size:13px; font-weight:600; justify-content:center; margin-top:auto; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15);">
+        🔄 Farklı Bir Stratejiyle Yeniden Oyna
       </button>
     `;
 

@@ -6,79 +6,80 @@
   <title>Stitch Ekran 1: Giriş ve Kişiselleştirme · SE Primer</title>
   <style>
     :root {
-      --bg: #090D16;
-      --surface: #111827;
-      --surface-border: #1F2937;
-      --accent: #3B82F6;
-      --accent-tutor: #8B5CF6;
-      --text: #F9FAFB;
-      --text-muted: #9CA3AF;
-      --danger: #EF4444;
-      --success: #10B981;
+      --bg: #000000;
+      --card: rgba(28, 28, 30, 0.7);
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #2997ff;
+      --text: #f5f5f7;
+      --text-muted: #86868b;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: #030712; color: var(--text); display: flex; justify-content: center; padding: 20px 10px; }
-    .phone-container { width: 390px; min-height: 844px; background: var(--bg); border: 2px solid #374151; border-radius: 44px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); display: flex; flex-direction: column; position: relative; }
-    .notch { width: 140px; height: 26px; background: #000; margin: 0 auto 12px; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; }
-    .content { padding: 16px 20px 30px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
-    .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(59, 130, 246, 0.15); color: #60A5FA; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(59, 130, 246, 0.3); }
-    h1 { font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.5px; }
-    p.sub { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-    .card { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
-    .card-title { font-size: 12px; font-weight: 700; color: #D1D5DB; text-transform: uppercase; letter-spacing: 0.5px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; letter-spacing: -0.01em; }
+    body { background: #000000; color: var(--text); display: flex; justify-content: center; padding: 24px 10px; }
+    .phone-container { width: 400px; min-height: 852px; background: var(--bg); border: 4px solid #2c2c2e; border-radius: 54px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 30px 90px rgba(0,0,0,0.95); display: flex; flex-direction: column; position: relative; }
+    .dynamic-island { width: 126px; height: 32px; background: #000; margin: 12px auto 6px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; box-shadow: 0 0 0 1px rgba(255,255,255,0.08); }
+    .island-lens { width: 10px; height: 10px; background: radial-gradient(circle at 40% 40%, #1c2738 0%, #000 100%); border-radius: 50%; }
+    .content { padding: 14px 18px 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .badge { display: inline-flex; align-items: center; background: rgba(41, 151, 255, 0.12); color: #2997ff; padding: 4px 10px; border-radius: 980px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    h1 { font-size: 26px; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    p.sub { font-size: 13px; color: var(--text-muted); line-height: 1.45; }
+    .card { background: var(--card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .card-title { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
     .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .btn-opt { background: #1F2937; border: 1px solid #374151; color: var(--text); padding: 10px; border-radius: 10px; font-size: 12px; font-weight: 600; text-align: center; cursor: pointer; transition: all 0.2s; }
-    .btn-opt.active { background: #2563EB; border-color: #60A5FA; color: white; box-shadow: 0 0 12px rgba(37, 99, 235, 0.5); }
+    .btn-opt { background: rgba(44, 44, 46, 0.5); border: 1px solid var(--border); color: var(--text); padding: 12px; border-radius: 14px; font-size: 12px; font-weight: 600; text-align: left; cursor: pointer; transition: all 0.25s; }
+    .btn-opt.active { background: rgba(41, 151, 255, 0.15); border-color: #2997ff; color: white; box-shadow: 0 0 0 1px #2997ff, 0 4px 16px rgba(41, 151, 255, 0.3); }
     .options-row { display: flex; flex-direction: column; gap: 6px; }
-    .banner-quote { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1)); border: 1px dashed rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 12px; font-size: 12px; color: #C4B5FD; font-style: italic; }
-    .cta-btn { margin-top: auto; background: linear-gradient(135deg, #10B981, #059669); color: white; border: none; padding: 16px; border-radius: 14px; font-size: 15px; font-weight: 700; cursor: pointer; text-align: center; box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4); }
+    .banner-quote { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 12px; font-size: 12px; color: #f5f5f7; }
+    .cta-btn { margin-top: auto; background: #0071e3; color: white; border: none; padding: 16px; border-radius: 980px; font-size: 14px; font-weight: 600; cursor: pointer; text-align: center; box-shadow: 0 8px 24px rgba(0, 113, 227, 0.35); }
   </style>
 </head>
 <body>
   <div class="phone-container">
-    <div class="notch"></div>
+    <div class="dynamic-island">
+      <span style="font-size:10px; font-weight:600; color:#86868b;">08:00</span>
+      <div class="island-lens"></div>
+      <span style="font-size:10px; font-weight:600; color:#30d158;">5G</span>
+    </div>
     <div class="content">
       <div>
-        <span class="badge">YZM301 · STITCH EKRAN 1 / 3</span>
+        <span class="badge">STITCH · APPLE PRO EKRAN 1 / 3</span>
       </div>
       <h1>SE Primer</h1>
-      <p class="sub">Kişiye uyum sağlayan kitap, bu kez yazılım mühendisi için: oyuncu karar verir, uygulama o kararın teknik sonucunu gösterir.</p>
+      <p class="sub">Kişiye uyum sağlayan kitap, bu kez yazılım mühendisi için: oyuncu karar verir, uygulama teknik sonucunu gösterir.</p>
 
       <div class="banner-quote">
-        "08:00, randevu sistemi çöktü. Nöbetçi sensin. Dün gece yeni sürüm çıktı. 300 hasta bekliyor."
+        ⚡ <strong>08:00 Kriz Başlangıcı:</strong> Randevu sistemi çöktü. Dün gece yeni sürüm çıktı. 300 hasta bekliyor.
       </div>
 
       <!-- Soru 1: Seviye -->
       <div class="card">
-        <span class="card-title">1. Deneyim Seviyen</span>
+        <span class="card-title">1. Deneyim Seviyesi</span>
         <div class="options-grid">
-          <div class="btn-opt active">🌱 Yeni Başladım<br><small style="color:#93C5FD;font-weight:normal;">Rehber İpuçları Açık</small></div>
-          <div class="btn-opt">⚡ Deneyimliyim<br><small style="color:#FCA5A5;font-weight:normal;">60 sn Süre Baskısı</small></div>
+          <div class="btn-opt active">🌱 Yeni Başladım<br><small style="color:#2997ff;font-weight:normal;">Sokratik İpuçları Açık</small></div>
+          <div class="btn-opt">⚡ Deneyimliyim<br><small style="color:#ff9f0a;font-weight:normal;">60 sn Süre Baskısı</small></div>
         </div>
       </div>
 
       <!-- Soru 2: Rol -->
       <div class="card">
-        <span class="card-title">2. Nöbetçi Rolün</span>
+        <span class="card-title">2. Nöbetçi Rolü</span>
         <div class="options-row">
-          <div class="btn-opt active" style="text-align:left; padding:8px 12px;">🛡️ Backend Mühendisi (DB & API)</div>
-          <div class="btn-opt" style="text-align:left; padding:8px 12px;">🚀 DevOps & SRE (K8s & CI/CD)</div>
-          <div class="btn-opt" style="text-align:left; padding:8px 12px;">💻 Fullstack Geliştirici</div>
+          <div class="btn-opt active">🛡️ Backend Mühendisi (DB & API)</div>
+          <div class="btn-opt">🚀 DevOps & SRE (K8s & CI/CD)</div>
+          <div class="btn-opt">💻 Fullstack Geliştirici</div>
         </div>
       </div>
 
       <!-- Soru 3: Hedef -->
       <div class="card">
-        <span class="card-title">3. Birincil Hedefin</span>
+        <span class="card-title">3. Öncelikli Kriz Hedefi</span>
         <div class="options-grid">
-          <div class="btn-opt active">🔒 Sistem Güvenilirliği</div>
-          <div class="btn-opt">⚡ Maksimum Hız (MTTR)</div>
+          <div class="btn-opt active">🔒 Güvenilirlik</div>
+          <div class="btn-opt">⚡ Hız (MTTR)</div>
         </div>
       </div>
 
-      <button class="cta-btn">NÖBETİ DEVRAL · KRİZE BAŞLA (08:00)</button>
+      <button class="cta-btn">Nöbeti Devral · Krize Başla (08:00) ➔</button>
     </div>
   </div>
 </body>
 </html>
-

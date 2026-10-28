@@ -6,50 +6,50 @@
   <title>Stitch Ekran 3: Sonuç ve Post-Mortem · SE Primer</title>
   <style>
     :root {
-      --bg: #090D16;
-      --surface: #111827;
-      --surface-border: #1F2937;
-      --accent: #3B82F6;
-      --accent-tutor: #8B5CF6;
-      --text: #F9FAFB;
-      --text-muted: #9CA3AF;
-      --danger: #EF4444;
-      --warning: #F59E0B;
-      --success: #10B981;
+      --bg: #000000;
+      --card: rgba(28, 28, 30, 0.7);
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #2997ff;
+      --text: #f5f5f7;
+      --text-muted: #86868b;
+      --green: #30d158;
+      --purple: #bf5af2;
+      --yellow: #ffd60a;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: #030712; color: var(--text); display: flex; justify-content: center; padding: 20px 10px; }
-    .phone-container { width: 390px; min-height: 844px; background: var(--bg); border: 2px solid #374151; border-radius: 44px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); display: flex; flex-direction: column; position: relative; }
-    .notch { width: 140px; height: 26px; background: #000; margin: 0 auto 12px; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; }
-    .content { padding: 16px 20px 30px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; letter-spacing: -0.01em; }
+    body { background: #000000; color: var(--text); display: flex; justify-content: center; padding: 24px 10px; }
+    .phone-container { width: 400px; min-height: 852px; background: var(--bg); border: 4px solid #2c2c2e; border-radius: 54px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 30px 90px rgba(0,0,0,0.95); display: flex; flex-direction: column; position: relative; }
+    .dynamic-island { width: 126px; height: 32px; background: #000; margin: 12px auto 6px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; box-shadow: 0 0 0 1px rgba(255,255,255,0.08); }
+    .content { padding: 14px 18px 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
     
-    .outcome-card { background: linear-gradient(180deg, #064E3B 0%, #111827 100%); border: 1.5px solid #059669; border-radius: 16px; padding: 16px; text-align: center; }
-    .outcome-card.bad { background: linear-gradient(180deg, #7F1D1D 0%, #111827 100%); border-color: #DC2626; }
-    .outcome-badge { display: inline-block; background: #10B981; color: #064E3B; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; margin-bottom: 8px; }
-    .outcome-card.bad .outcome-badge { background: #EF4444; color: white; }
-    .outcome-title { font-size: 20px; font-weight: 800; }
-    .outcome-sub { font-size: 12px; color: #A7F3D0; margin-top: 6px; }
-    .outcome-card.bad .outcome-sub { color: #FECACA; }
+    .outcome-card { background: linear-gradient(180deg, rgba(48, 209, 88, 0.15) 0%, rgba(28, 28, 30, 0.85) 100%); border: 1px solid rgba(48, 209, 88, 0.4); border-radius: 22px; padding: 18px; text-align: center; }
+    .outcome-badge { display: inline-block; background: var(--green); color: #000; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 980px; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.03em; }
+    .outcome-title { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+    .outcome-sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.45; }
 
-    .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .metric-item { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 12px; padding: 10px; text-align: center; }
-    .metric-val { font-size: 16px; font-weight: 800; color: #60A5FA; }
-    .metric-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
+    .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .metric-item { background: var(--card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 16px; padding: 12px; text-align: center; }
+    .metric-val { font-size: 18px; font-weight: 700; }
+    .metric-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; letter-spacing: 0.04em; }
 
-    .post-mortem { background: var(--surface); border: 1px solid var(--surface-border); border-radius: 14px; padding: 14px; }
-    .pm-title { font-size: 12px; font-weight: 700; color: #E5E7EB; text-transform: uppercase; margin-bottom: 8px; }
-    .pm-list { font-size: 11px; color: #D1D5DB; line-height: 1.5; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
+    .post-mortem { background: var(--card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 18px; padding: 16px; }
+    .pm-title { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.06em; }
+    .pm-list { font-size: 12px; color: var(--text-muted); line-height: 1.5; padding-left: 16px; display: flex; flex-direction: column; gap: 4px; }
 
-    .btn-restart { margin-top: auto; background: #374151; color: white; border: 1px solid #4B5563; padding: 14px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; text-align: center; }
-    .btn-restart:hover { background: #4B5563; }
+    .btn-restart { margin-top: auto; background: rgba(255, 255, 255, 0.08); color: white; border: 1px solid rgba(255, 255, 255, 0.15); padding: 14px; border-radius: 980px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; }
+    .btn-restart:hover { background: rgba(255, 255, 255, 0.15); }
   </style>
 </head>
 <body>
   <div class="phone-container">
-    <div class="notch"></div>
+    <div class="dynamic-island">
+      <span style="font-size:10px; font-weight:600; color:#86868b;">08:25</span>
+      <div style="width:10px; height:10px; background:#000; border-radius:50%;"></div>
+      <span style="font-size:10px; font-weight:600; color:#30d158;">5G</span>
+    </div>
     <div class="content">
       <div>
-        <span style="font-size:10px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.5px;">YZM301 · STITCH EKRAN 3 / 3</span>
+        <span style="font-size:11px; color:var(--green); text-transform:uppercase; letter-spacing:0.04em; font-weight:600;">STITCH · APPLE PRO EKRAN 3 / 3</span>
       </div>
 
       <!-- İyi Son (Son A) Örneği -->
@@ -62,19 +62,19 @@
       <!-- Metrikler -->
       <div class="metrics-grid">
         <div class="metric-item">
-          <div class="metric-val" style="color:#34D399;">25 Dk</div>
+          <div class="metric-val" style="color:var(--green);">25 Dk</div>
           <div class="metric-lbl">MTTR (Çözüm Süresi)</div>
         </div>
         <div class="metric-item">
-          <div class="metric-val" style="color:#60A5FA;">300 / 300</div>
+          <div class="metric-val" style="color:var(--accent);">300 / 300</div>
           <div class="metric-lbl">Kurtarılan Hasta</div>
         </div>
         <div class="metric-item">
-          <div class="metric-val" style="color:#A78BFA;">%100 Uyum</div>
+          <div class="metric-val" style="color:var(--purple);">%100 Uyum</div>
           <div class="metric-lbl">KVKK Veri Gizliliği</div>
         </div>
         <div class="metric-item">
-          <div class="metric-val" style="color:#FBBF24;">0 TL</div>
+          <div class="metric-val" style="color:var(--yellow);">0 TL</div>
           <div class="metric-lbl">Hukuki Ceza Riski</div>
         </div>
       </div>
@@ -89,9 +89,8 @@
         </ul>
       </div>
 
-      <button class="btn-restart">🔄 FARKLI BİR YOL İLE YENİDEN OYNA</button>
+      <button class="btn-restart">🔄 Farklı Bir Stratejiyle Yeniden Oyna</button>
     </div>
   </div>
 </body>
 </html>
-
