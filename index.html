@@ -27,28 +27,49 @@
 
   <!-- Ana Görünüm Alanı -->
   <main class="main-viewport">
-    <div id="app-frame" class="frame-mobile">
-      <!-- Apple Dynamic Island -->
-      <div class="dynamic-island">
-        <span class="island-pill-text">08:00</span>
-        <div style="display:flex; align-items:center; gap:6px;">
-          <div class="island-camera"></div>
-          <div class="island-sensor"></div>
+    <div class="phone-chassis-wrapper">
+      <!-- Hardware Buttons (Left side: Action, Vol Up, Vol Down; Right side: Power) -->
+      <div class="hw-btn hw-action"></div>
+      <div class="hw-btn hw-volume-up"></div>
+      <div class="hw-btn hw-volume-down"></div>
+      <div class="hw-btn hw-power"></div>
+      <div class="antenna-band ant-top-left"></div>
+      <div class="antenna-band ant-top-right"></div>
+      <div class="antenna-band ant-bottom-left"></div>
+      <div class="antenna-band ant-bottom-right"></div>
+
+      <div id="app-frame" class="frame-mobile">
+        <!-- Apple Top iOS Status Header (Matching Desert Titanium Reference) -->
+        <div class="top-status-header">
+          <span class="status-time">08:00</span>
+          <div class="top-speaker-slit"></div>
+          <div class="status-icons">
+            <span class="signal-bars" title="Signal">
+              <span class="bar b1"></span>
+              <span class="bar b2"></span>
+              <span class="bar b3"></span>
+              <span class="bar b4"></span>
+            </span>
+            <span class="cellular-type">5G</span>
+            <span class="battery-icon" title="Battery 100%">
+              <span class="battery-level"></span>
+              <span class="battery-nub"></span>
+            </span>
+          </div>
         </div>
-        <span class="island-pill-text" style="color:var(--apple-green);">5G</span>
-      </div>
 
-      <!-- Telemetri Çubuğu (Kriz anında aktif) -->
-      <div id="telemetry-bar" class="telemetry-bar" style="display:none;"></div>
+        <!-- Telemetri Çubuğu (Kriz anında aktif) -->
+        <div id="telemetry-bar" class="telemetry-bar" style="display:none;"></div>
 
-      <!-- Senior Modu Stres Sayacı -->
-      <div id="stress-timer-bar" class="stress-timer-container" style="display:none;">
-        <div id="stress-timer-fill" class="stress-timer-fill"></div>
-      </div>
+        <!-- Senior Modu Stres Sayacı -->
+        <div id="stress-timer-bar" class="stress-timer-container" style="display:none;">
+          <div id="stress-timer-fill" class="stress-timer-fill"></div>
+        </div>
 
-      <!-- Dinamik Ekran İçeriği -->
-      <div id="screen-container" class="screen-container">
-        <!-- JavaScript tarafından render edilir -->
+        <!-- Dinamik Ekran İçeriği (Smooth Inside Scrolling) -->
+        <div id="screen-container" class="screen-container">
+          <!-- JavaScript tarafından render edilir -->
+        </div>
       </div>
     </div>
   </main>

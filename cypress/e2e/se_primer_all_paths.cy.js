@@ -11,16 +11,16 @@ describe('SE Primer: Kişiselleştirilmiş Kriz Simülasyonu E2E Testleri', () =
 
   it('1. Onboarding ve Kişiselleştirme: Junior ve Senior modları yapılandırılabilmelidir', () => {
     cy.contains('SE Primer').should('be.visible');
-    cy.contains('1. Seviye Seçimi').should('be.visible');
+    cy.contains('1. DENEYİM SEVİYESİ').should('be.visible');
 
     // Varsayılan olarak Junior modu seçilidir
     cy.contains('Yeni Başladım (Jr)').should('be.visible');
-    cy.contains('Junior Modu Seçildi').should('be.visible');
+    cy.contains('Junior Modu').should('be.visible');
 
     // Senior moduna geçiş testi
     cy.get('[data-val="senior"]').click();
-    cy.contains('Senior Modu Seçildi').should('be.visible');
-    cy.contains('60 saniyelik stres zamanlayıcısı').should('be.visible');
+    cy.contains('Senior Modu').should('be.visible');
+    cy.contains('60 saniyelik').should('be.visible');
 
     // Rol değişimi: DevOps seç
     cy.get('[data-val="devops"]').click();

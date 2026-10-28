@@ -17,20 +17,20 @@
 
 ---
 
-## 2. Tasarım Sistemi ve Tokenlar (Apple Pro Light & Dark Tokens)
+## 2. Tasarım Sistemi ve Tokenlar (Apple Desert Titanium Studio & Light Tokens)
 
-### 2.1. Renk Paleti (Cupertino Light Palette - Varsayılan Açık Tema)
+### 2.1. Renk Paleti (Apple Desert Titanium / Champagne Gold 3D Studio Mockup)
 | Token Adı | Değer | Kullanım Alanı | Anlamsal Karşılığı |
 |---|---|---|---|
-| `--apple-bg` | `#f5f5f7` | Porselen Açık Arka Plan | Apple.com / iOS Light Canvas |
-| `--apple-card` | `rgba(255, 255, 255, 0.82)` | Frosted White Glass | Apple Akrilik Buzlu Cam |
-| `--apple-border` | `rgba(0, 0, 0, 0.08)` | Mikro Çerçeveler | Hassas Doğal Ayrım Çizgisi |
-| `--apple-blue` | `#0071e3` | Birincil Aksiyonlar & Pill CTA | Apple System Blue |
-| `--apple-purple` | `#af52de` | Sokratik AI Tutor | Apple Intelligence / Siri Aurora |
-| `--apple-red` | `#ff3b30` | 08:00 Kriz Göstergesi & Ceza | Apple System Red Aciliyet |
-| `--apple-green` | `#34c759` | İyi Son (Son A), kurtarılan hasta | Apple Fitness & Health Green |
-| `--apple-text-primary`| `#1d1d1f` | Başlıklar ve Birincil Metin | Apple Graphite Black |
-| `--apple-text-secondary`| `#86868b` | Alt Metinler & Etiketler | Apple Space Gray |
+| `--studio-bg` | `#F5EFE6` | Stüdyo Çevresi & Sahne | Apple Keynote 3D Desert Studio |
+| `--titanium-metal-outer` | `#D6C7B7` | Donanım Titanyum Gövde | iPhone 16 Pro Desert Titanium |
+| `--titanium-shadow` | `0 32px 75px rgba(115,90,65,0.35)`| Zemin Temas Gölgesi | 3D Gerçekçi Fiziksel Yansıma |
+| `--phone-screen-bg` | `#FAF7F2` | Ekran İçi Şampanya Beji | Gözü Yormayan Organik Kağıt/Ekran |
+| `--card-frosted-bg` | `rgba(255, 255, 255, 0.62)` | Frosted White Glass | Apple Buzlu Cam Konteyner |
+| `--amber-pill-bg` | `linear-gradient(135deg, ...)` | ✦ 08:00 Kriz Kapsülü | Amber Gold Kriz Göstergesi |
+| `--btn-selected-border` | `#75B5F0` | Seçili Çip Lüks Işıltı | Holografik Çift Çerçeve Işıltısı |
+| `--text-dark` | `#1D1D1F` | Başlıklar ve Birincil Metin | Deep Titanium Black |
+| `--text-muted` | `#86868B` | Alt Metinler & Etiketler | Apple Space Gray |
 
 *(Not: Üst menüdeki "🌙 Koyu" butonuyla istendiğinde Apple OLED Dark temasına tek tıkla geçiş yapılabilir).*
 
@@ -38,15 +38,16 @@
 - **Ana Yazı Tipi:** `-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif`
 - **Monospace Yazı Tipi:** `"SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`
 - **Ölçekler ve Efektler:**
-  - `Hero Title`: 26px / Bold / Apple Graphite Gradient (`linear-gradient(180deg, #1d1d1f 0%, #434344 100%)`)
-  - `Card Header`: 14px / Semi-Bold (Letter-spacing: -0.015em)
-  - `Body Text`: 13px / Regular (Line-height: 1.45, Color: `#86868b`)
+  - `Hero Title`: 26px / Bold / `#1D1D1F` (Letter-spacing: -0.025em)
+  - `Card Header`: 10.5px / Semi-Bold Uppercase (Letter-spacing: 0.06em)
+  - `Body Text`: 11.5px / Regular (Line-height: 1.45, Color: `#86868B`)
   - `Apple Pill Badges`: 11px / Medium (Letter-spacing: 0.04em)
 
 ### 2.3. Donanım ve Etkileşim Öğeleri
-- **Apple Dynamic Island:** Açık tema gövde üzerinde yüksek kontrast oluşturan 126x32px siyah parlak sensör adacığı.
-- **Silver Titanium Bezel:** iPhone 16 Pro Silver referanslı 4px `#d2d2d7` kenarlık ve yumuşak derin gölge.
-- **Apple Pill CTA:** 980px yuvarlatılmış hap formunda birincil aksiyon butonları.
+- **Fiziksel Titanyum Tuşlar:** Kasanın solunda Eylem (Action) ve Ses Tuşları, sağında Güç (Power) tuşu ile mikro anten şeritleri.
+- **Desert Titanium Bezel & Chamfer:** iPhone 16 Pro Desert Titanium 3.5px metal çerçeve ve iç siyah OLED çerçevesi.
+- **Apple Pill CTA:** 980px yuvarlatılmış hap formunda derin siyah (`#1D1D1F`) lüks butonlar.
+- **Tam Görünüm Uyumu (Dynamic Viewport Fitting):** `height: calc(100vh - 54px)` ve `aspect-ratio: 390 / 844` ile her ekranda taşma olmaksızın kusursuz oran.
 
 ---
 

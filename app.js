@@ -151,21 +151,26 @@ class SEPrimerApp {
     const isJunior = level === 'junior';
 
     this.screenContainer.innerHTML = `
-      <div style="display:flex; flex-direction:column; gap:4px; margin-top:2px;">
-        <span style="font-size:11px; color:var(--apple-blue); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">YZM301 · SE Primer</span>
+      <div class="screen-header-block">
+        <div class="brand-sub-badge">
+          <span class="badge-blue">YZM301</span>
+          <span class="badge-dot">•</span>
+          <span class="badge-gold">SE PRİMER</span>
+        </div>
         <h1 class="apple-headline">SE Primer</h1>
         <p class="apple-sub">
-          Kişiye uyum sağlayan kitap, yazılım mühendisi için: oyuncu karar verir, sistem teknik sonucunu gösterir.
+          Kişiye uyum sağlayan kitap, yazılım mühendisi için; oyuncu karar verir, sistem teknik sonucunu gösterir.
         </p>
       </div>
 
-      <div style="background:rgba(0,0,0,0.03); border:1px solid var(--apple-border); border-radius:14px; padding:10px 12px; font-size:12px; color:var(--apple-text-primary);">
-        <strong style="color:var(--apple-orange);">⚡ 08:00 Kriz Başlangıcı:</strong> Randevu sistemi çöktü. Dün gece yeni sürüm çıktı. 300 hasta poliklinik kapısında bekliyor.
+      <div class="crisis-amber-pill">
+        <span class="pill-sparkle">✦</span>
+        <span class="pill-text">08:00 Kriz Başlangıcı</span>
       </div>
 
       <!-- Soru 1: Seviye -->
       <div class="card-glass">
-        <span class="card-title">1. Deneyim Seviyesi</span>
+        <span class="card-title">1. DENEYİM SEVİYESİ</span>
         <div class="grid-2">
           <div class="selectable-chip ${level === 'junior' ? 'selected' : ''}" data-type="level" data-val="junior">
             <strong>🌱 Yeni Başladım (Jr)</strong>
@@ -180,7 +185,7 @@ class SEPrimerApp {
 
       <!-- Soru 2: Rol -->
       <div class="card-glass">
-        <span class="card-title">2. Nöbetçi Rolü</span>
+        <span class="card-title">2. NÖBETÇİ ROLÜ</span>
         <div style="display:flex; flex-direction:column; gap:8px;">
           <div class="selectable-chip ${role === 'backend' ? 'selected' : ''}" data-type="role" data-val="backend">
             <strong>🛡️ Backend Mühendisi</strong>
@@ -199,7 +204,7 @@ class SEPrimerApp {
 
       <!-- Soru 3: Hedef -->
       <div class="card-glass">
-        <span class="card-title">3. Öncelikli Kriz Hedefi</span>
+        <span class="card-title">3. ÖNCELİKLİ HEDEF</span>
         <div class="grid-2">
           <div class="selectable-chip ${goal === 'reliability' ? 'selected' : ''}" data-type="goal" data-val="reliability">
             <strong>🔒 Güvenilirlik</strong>
@@ -212,7 +217,7 @@ class SEPrimerApp {
         </div>
       </div>
 
-      <div style="font-size:12px; color:${isJunior ? 'var(--apple-green)' : 'var(--apple-orange)'}; background:${isJunior ? 'rgba(48,209,88,0.1)' : 'rgba(255,159,10,0.1)'}; border:1px solid ${isJunior ? 'rgba(48,209,88,0.25)' : 'rgba(255,159,10,0.25)'}; border-radius:14px; padding:10px 14px;">
+      <div class="mode-info-card">
         ${isJunior ? '💡 <strong>Junior Modu:</strong> AI Tutor her adımda hazır rehber ipuçlarıyla eşlik eder.' : '⚠️ <strong>Senior Modu:</strong> 60 saniyelik görsel ve sesli stres sayacı devrededir!'}
       </div>
 
