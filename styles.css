@@ -1,35 +1,47 @@
 /* ==========================================================================
-   SE PRIMER · APPLE PRO DESIGN SYSTEM (Cupertino Premium Theme)
-   Inspired by Apple.com, iOS 18 Dynamic Island, SF Pro & Apple Intelligence
+   SE PRIMER · APPLE LIGHT PRO DESIGN SYSTEM (Cupertino White & Silver)
+   Inspired by Apple.com, iOS 18 Light Mode, Silver Titanium & Dynamic Island
    ========================================================================== */
 
-:root {
-  /* Apple Neutral Dark Palette */
-  --apple-black: #000000;
-  --apple-bg: #000000;
-  --apple-card: rgba(28, 28, 30, 0.65);
-  --apple-card-hover: rgba(44, 44, 46, 0.75);
-  --apple-surface-elevated: rgba(44, 44, 46, 0.6);
-  --apple-border: rgba(255, 255, 255, 0.12);
-  --apple-border-subtle: rgba(255, 255, 255, 0.08);
-  --apple-border-highlight: rgba(255, 255, 255, 0.25);
+:root,
+[data-theme="light"] {
+  /* Apple Light Palette */
+  --apple-bg: #f5f5f7;
+  --apple-bg-ambient: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(0, 113, 227, 0.08), transparent 70%),
+                      radial-gradient(circle 500px at 90% 10%, rgba(175, 82, 222, 0.05), transparent 60%);
+  --apple-chassis-bg: #fbfbfd;
+  --apple-chassis-border: #d2d2d7;
+  --apple-chassis-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 25px 70px -10px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.04);
+  
+  --apple-card: rgba(255, 255, 255, 0.82);
+  --apple-card-hover: rgba(255, 255, 255, 0.95);
+  --apple-surface-elevated: #ffffff;
+  --apple-border: rgba(0, 0, 0, 0.08);
+  --apple-border-subtle: rgba(0, 0, 0, 0.05);
+  --apple-border-highlight: rgba(0, 113, 227, 0.35);
 
   /* Apple System Colors */
-  --apple-blue: #2997ff;
+  --apple-blue: #0071e3;
   --apple-blue-hover: #0077ed;
-  --apple-blue-glow: rgba(41, 151, 255, 0.28);
-  --apple-indigo: #5e5ce6;
-  --apple-purple: #bf5af2;
-  --apple-pink: #ff375f;
-  --apple-green: #30d158;
-  --apple-yellow: #ffd60a;
-  --apple-orange: #ff9f0a;
-  --apple-red: #ff453a;
+  --apple-blue-glow: rgba(0, 113, 227, 0.16);
+  --apple-indigo: #5856d6;
+  --apple-purple: #af52de;
+  --apple-pink: #ff2d55;
+  --apple-green: #34c759;
+  --apple-yellow: #ffcc00;
+  --apple-orange: #ff9500;
+  --apple-red: #ff3b30;
 
   /* Apple Typography Hierarchy */
-  --apple-text-primary: #f5f5f7;
+  --apple-text-primary: #1d1d1f;
   --apple-text-secondary: #86868b;
-  --apple-text-tertiary: #6e6e73;
+  --apple-text-tertiary: #a1a1a6;
+  --apple-headline-gradient: linear-gradient(180deg, #1d1d1f 0%, #434344 100%);
+
+  /* Header & Modals */
+  --apple-header-bg: rgba(255, 255, 255, 0.82);
+  --apple-modal-bg: rgba(255, 255, 255, 0.94);
+  --apple-input-bg: #ffffff;
 
   /* Fonts */
   --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -45,6 +57,42 @@
   --apple-ease: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+[data-theme="dark"] {
+  /* Apple OLED Dark Palette */
+  --apple-bg: #000000;
+  --apple-bg-ambient: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(41, 151, 255, 0.12), transparent),
+                      radial-gradient(circle 600px at 85% 15%, rgba(191, 90, 242, 0.08), transparent);
+  --apple-chassis-bg: #000000;
+  --apple-chassis-border: #2c2c2e;
+  --apple-chassis-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 25px 80px -10px rgba(0, 0, 0, 0.95);
+
+  --apple-card: rgba(28, 28, 30, 0.68);
+  --apple-card-hover: rgba(44, 44, 46, 0.78);
+  --apple-surface-elevated: rgba(44, 44, 46, 0.6);
+  --apple-border: rgba(255, 255, 255, 0.12);
+  --apple-border-subtle: rgba(255, 255, 255, 0.08);
+  --apple-border-highlight: rgba(255, 255, 255, 0.25);
+
+  --apple-blue: #2997ff;
+  --apple-blue-hover: #0077ed;
+  --apple-blue-glow: rgba(41, 151, 255, 0.28);
+  --apple-indigo: #5e5ce6;
+  --apple-purple: #bf5af2;
+  --apple-green: #30d158;
+  --apple-yellow: #ffd60a;
+  --apple-orange: #ff9f0a;
+  --apple-red: #ff453a;
+
+  --apple-text-primary: #f5f5f7;
+  --apple-text-secondary: #86868b;
+  --apple-text-tertiary: #6e6e73;
+  --apple-headline-gradient: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
+
+  --apple-header-bg: rgba(0, 0, 0, 0.75);
+  --apple-modal-bg: rgba(30, 30, 32, 0.9);
+  --apple-input-bg: rgba(28, 28, 30, 0.85);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -54,10 +102,8 @@
 }
 
 body {
-  background: #000000;
-  background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(41, 151, 255, 0.12), transparent),
-    radial-gradient(circle 600px at 85% 15%, rgba(191, 90, 242, 0.08), transparent);
+  background: var(--apple-bg);
+  background-image: var(--apple-bg-ambient);
   background-attachment: fixed;
   color: var(--apple-text-primary);
   font-family: var(--font-sf);
@@ -65,13 +111,14 @@ body {
   display: flex;
   flex-direction: column;
   letter-spacing: -0.011em;
+  transition: background 0.35s var(--apple-ease), color 0.35s var(--apple-ease);
 }
 
 /* ==========================================================================
-   Apple.com Style Global Navigation Header
+   Apple Global Navigation Header
    ========================================================================== */
 header.app-header {
-  background: rgba(0, 0, 0, 0.75);
+  background: var(--apple-header-bg);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid var(--apple-border-subtle);
@@ -83,6 +130,7 @@ header.app-header {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: all 0.35s var(--apple-ease);
 }
 
 .brand-section {
@@ -92,9 +140,9 @@ header.app-header {
 }
 
 .brand-badge {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #f5f5f7;
+  background: rgba(0, 113, 227, 0.1);
+  border: 1px solid rgba(0, 113, 227, 0.2);
+  color: var(--apple-blue);
   font-size: 11px;
   font-weight: 600;
   padding: 3px 8px;
@@ -106,7 +154,7 @@ header.app-header {
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.02em;
-  background: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
+  background: var(--apple-headline-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -118,8 +166,8 @@ header.app-header {
 }
 
 .btn-nav {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--apple-border);
   color: var(--apple-text-primary);
   font-size: 12px;
   font-weight: 500;
@@ -133,20 +181,20 @@ header.app-header {
 }
 
 .btn-nav:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
   transform: translateY(-0.5px);
 }
 
 .btn-nav.active {
-  background: #f5f5f7;
-  color: #000000;
-  border-color: #ffffff;
+  background: var(--apple-blue);
+  color: #ffffff;
+  border-color: var(--apple-blue);
   font-weight: 600;
 }
 
 /* ==========================================================================
-   Viewport Shell: iPhone 16 Pro Titanium Frame vs Studio Display Wide Mode
+   Viewport Shell: iPhone 16 Pro Silver & Natural Titanium Frame
    ========================================================================== */
 main.main-viewport {
   flex: 1;
@@ -156,19 +204,14 @@ main.main-viewport {
   padding: 32px 16px;
 }
 
-/* Apple iPhone Pro Hardware Chassis */
 .frame-mobile {
   width: 100%;
   max-width: 412px;
   min-height: 852px;
-  background: #000000;
-  /* Titanium frame bezel */
-  border: 4px solid #2c2c2e;
+  background: var(--apple-chassis-bg);
+  border: 4px solid var(--apple-chassis-border);
   border-radius: 54px;
-  box-shadow: 
-    0 0 0 1px rgba(255, 255, 255, 0.15),
-    0 25px 80px -10px rgba(0, 0, 0, 0.95),
-    0 0 40px rgba(41, 151, 255, 0.08);
+  box-shadow: var(--apple-chassis-shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -182,14 +225,14 @@ main.main-viewport {
   min-height: auto;
   border-radius: 28px;
   border: 1px solid var(--apple-border);
-  background: rgba(18, 18, 20, 0.7);
+  background: var(--apple-card);
   backdrop-filter: blur(30px);
   padding: 16px;
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
 }
 
 /* ==========================================================================
-   Apple Dynamic Island
+   Apple Dynamic Island (Iconic Contrast on Light Background)
    ========================================================================== */
 .dynamic-island {
   width: 126px;
@@ -201,14 +244,14 @@ main.main-viewport {
   align-items: center;
   justify-content: space-between;
   padding: 0 12px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 20;
   transition: all 0.3s var(--apple-ease);
 }
 
 .dynamic-island:hover {
   width: 210px;
-  box-shadow: 0 0 0 1px rgba(41, 151, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
 }
 
 .island-camera {
@@ -216,7 +259,7 @@ main.main-viewport {
   height: 11px;
   background: radial-gradient(circle at 40% 40%, #1c2738 0%, #050b14 70%, #000 100%);
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: inline-block;
 }
 
@@ -231,7 +274,7 @@ main.main-viewport {
 .island-pill-text {
   font-size: 10px;
   font-weight: 600;
-  color: var(--apple-text-secondary);
+  color: #a1a1a6;
   letter-spacing: 0.02em;
 }
 
@@ -256,11 +299,11 @@ main.main-viewport {
 }
 
 .pulse-badge {
-  background: rgba(255, 69, 58, 0.12);
+  background: rgba(255, 59, 48, 0.1);
   color: var(--apple-red);
   padding: 3px 10px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 69, 58, 0.3);
+  border: 1px solid rgba(255, 59, 48, 0.25);
   font-size: 11px;
   font-weight: 600;
   display: inline-flex;
@@ -285,24 +328,24 @@ main.main-viewport {
   50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-/* Senior Stress Timer (Apple Watch Workout Progress Bar) */
+/* Senior Stress Timer (Apple Watch Progress Bar) */
 .stress-timer-container {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.06);
   height: 4px;
   width: 100%;
   overflow: hidden;
 }
 
 .stress-timer-fill {
-  background: linear-gradient(90deg, #30d158, #ffd60a, #ff453a);
+  background: linear-gradient(90deg, #34c759, #ffcc00, #ff3b30);
   height: 100%;
   width: 100%;
   transition: width 1s linear;
-  box-shadow: 0 0 10px rgba(255, 69, 58, 0.5);
+  box-shadow: 0 0 8px rgba(255, 59, 48, 0.4);
 }
 
 /* ==========================================================================
-   Screen Content & Cupertino Glass Cards
+   Screen Content & Cupertino Glass Cards (Light Porcelain)
    ========================================================================== */
 .screen-container {
   padding: 14px 18px 24px;
@@ -314,7 +357,7 @@ main.main-viewport {
 
 /* Apple Frosted Glass Card */
 .card-glass {
-  background: rgba(28, 28, 30, 0.68);
+  background: var(--apple-card);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--apple-border);
@@ -323,8 +366,8 @@ main.main-viewport {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  transition: border-color 0.25s var(--apple-ease);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s var(--apple-ease);
 }
 
 .card-title {
@@ -338,13 +381,13 @@ main.main-viewport {
   align-items: center;
 }
 
-/* Typography Enhancements */
+/* Typography */
 h1.apple-headline {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.15;
-  background: linear-gradient(180deg, #FFFFFF 0%, #CCCCCC 100%);
+  background: var(--apple-headline-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -357,7 +400,7 @@ p.apple-sub {
 }
 
 /* ==========================================================================
-   Interactive Selectable Chips (iOS Settings / Picker Style)
+   Interactive Selectable Chips (iOS Settings Style)
    ========================================================================== */
 .grid-2 {
   display: grid;
@@ -366,7 +409,7 @@ p.apple-sub {
 }
 
 .selectable-chip {
-  background: rgba(44, 44, 46, 0.45);
+  background: var(--apple-surface-elevated);
   border: 1px solid var(--apple-border);
   border-radius: 16px;
   padding: 14px 12px;
@@ -377,25 +420,26 @@ p.apple-sub {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .selectable-chip:hover {
-  background: rgba(58, 58, 60, 0.6);
-  border-color: rgba(255, 255, 255, 0.22);
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.16);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .selectable-chip.selected {
-  background: rgba(41, 151, 255, 0.14);
+  background: rgba(0, 113, 227, 0.06);
   border-color: var(--apple-blue);
-  box-shadow: 0 0 0 1px var(--apple-blue), 0 6px 20px var(--apple-blue-glow);
+  box-shadow: 0 0 0 1px var(--apple-blue), 0 4px 14px var(--apple-blue-glow);
 }
 
 .selectable-chip strong {
   font-size: 13px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--apple-text-primary);
   letter-spacing: -0.01em;
 }
 
@@ -409,8 +453,7 @@ p.apple-sub {
    Decision Buttons (Apple Action Card Style)
    ========================================================================== */
 .btn-decision {
-  background: rgba(36, 36, 38, 0.7);
-  backdrop-filter: blur(12px);
+  background: var(--apple-surface-elevated);
   border: 1px solid var(--apple-border);
   border-radius: 16px;
   padding: 16px;
@@ -421,26 +464,26 @@ p.apple-sub {
   flex-direction: column;
   gap: 6px;
   transition: all 0.25s var(--apple-ease);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .btn-decision:hover {
-  background: rgba(50, 50, 53, 0.85);
+  background: #ffffff;
   border-color: var(--apple-blue);
   transform: scale(1.01);
-  box-shadow: 0 8px 24px var(--apple-blue-glow);
+  box-shadow: 0 6px 20px var(--apple-blue-glow);
 }
 
 .btn-decision.active-choice {
-  background: rgba(48, 209, 88, 0.12);
+  background: rgba(52, 199, 89, 0.08);
   border-color: var(--apple-green);
-  box-shadow: 0 0 0 1px var(--apple-green), 0 8px 24px rgba(48, 209, 88, 0.25);
+  box-shadow: 0 0 0 1px var(--apple-green), 0 6px 18px rgba(52, 199, 89, 0.18);
 }
 
 .btn-decision .choice-header {
   font-size: 14px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--apple-text-primary);
   letter-spacing: -0.015em;
 }
 
@@ -454,15 +497,15 @@ p.apple-sub {
    Technical Feedback Panel (What & Why)
    ========================================================================== */
 .feedback-panel {
-  background: linear-gradient(180deg, rgba(48, 209, 88, 0.08) 0%, rgba(28, 28, 30, 0.85) 100%);
-  border: 1px solid rgba(48, 209, 88, 0.3);
+  background: linear-gradient(180deg, rgba(52, 199, 89, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border: 1px solid rgba(52, 199, 89, 0.3);
   border-radius: 18px;
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   animation: appleFadeIn 0.3s var(--apple-ease);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 @keyframes appleFadeIn {
@@ -487,32 +530,19 @@ p.apple-sub {
 }
 
 /* ==========================================================================
-   Apple Intelligence Socratic AI Tutor Dock (Siri Aurora Aesthetic)
+   Apple Intelligence Socratic AI Tutor Dock (Siri Aurora in Light Mode)
    ========================================================================== */
 .tutor-dock {
-  background: linear-gradient(145deg, rgba(41, 151, 255, 0.08) 0%, rgba(191, 90, 242, 0.08) 50%, rgba(28, 28, 30, 0.9) 100%);
-  border: 1px solid rgba(191, 90, 242, 0.3);
+  background: linear-gradient(145deg, rgba(0, 113, 227, 0.05) 0%, rgba(175, 82, 222, 0.06) 50%, rgba(255, 255, 255, 0.95) 100%);
+  border: 1px solid rgba(175, 82, 222, 0.25);
   border-radius: 22px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 10px 30px rgba(191, 90, 242, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 24px rgba(175, 82, 222, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
-}
-
-/* Ambient glow orb behind Siri */
-.tutor-dock::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(191, 90, 242, 0.3) 0%, transparent 70%);
-  filter: blur(20px);
-  pointer-events: none;
 }
 
 .tutor-header {
@@ -522,13 +552,13 @@ p.apple-sub {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #d1b3ff;
+  color: var(--apple-purple);
 }
 
 .tutor-chat-box {
-  background: rgba(18, 18, 20, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
   padding: 14px;
   display: flex;
@@ -541,7 +571,7 @@ p.apple-sub {
 .tutor-bubble {
   font-size: 12px;
   line-height: 1.5;
-  color: #f5f5f7;
+  color: var(--apple-text-primary);
 }
 
 .quick-prompts-row {
@@ -557,9 +587,9 @@ p.apple-sub {
 }
 
 .quick-prompt-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e5e5ea;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: var(--apple-text-primary);
   font-size: 11px;
   font-weight: 500;
   padding: 6px 12px;
@@ -570,9 +600,8 @@ p.apple-sub {
 }
 
 .quick-prompt-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.16);
 }
 
 .tutor-input-row {
@@ -582,12 +611,12 @@ p.apple-sub {
 
 .tutor-input-field {
   flex: 1;
-  background: rgba(28, 28, 30, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--apple-input-bg);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: var(--radius-pill);
   padding: 10px 16px;
   font-size: 12px;
-  color: #ffffff;
+  color: var(--apple-text-primary);
   outline: none;
   font-family: var(--font-sf);
   transition: all 0.2s var(--apple-ease);
@@ -595,12 +624,11 @@ p.apple-sub {
 
 .tutor-input-field:focus {
   border-color: var(--apple-purple);
-  box-shadow: 0 0 0 1px var(--apple-purple), 0 0 16px rgba(191, 90, 242, 0.35);
-  background: rgba(36, 36, 38, 0.95);
+  box-shadow: 0 0 0 1px var(--apple-purple), 0 0 14px rgba(175, 82, 222, 0.25);
 }
 
 .btn-tutor-submit {
-  background: linear-gradient(135deg, #af52de, #5e5ce6);
+  background: linear-gradient(135deg, #af52de, #5856d6);
   border: none;
   color: #ffffff;
   padding: 0 18px;
@@ -609,12 +637,12 @@ p.apple-sub {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s var(--apple-ease);
-  box-shadow: 0 4px 12px rgba(175, 82, 222, 0.3);
+  box-shadow: 0 3px 10px rgba(175, 82, 222, 0.25);
 }
 
 .btn-tutor-submit:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(175, 82, 222, 0.45);
+  box-shadow: 0 5px 14px rgba(175, 82, 222, 0.35);
 }
 
 /* ==========================================================================
@@ -631,7 +659,7 @@ p.apple-sub {
   letter-spacing: -0.01em;
   cursor: pointer;
   text-align: center;
-  box-shadow: 0 8px 24px var(--apple-blue-glow);
+  box-shadow: 0 6px 18px var(--apple-blue-glow);
   transition: all 0.25s var(--apple-ease);
   display: flex;
   justify-content: center;
@@ -642,7 +670,7 @@ p.apple-sub {
 .btn-primary-cta:hover {
   background: var(--apple-blue-hover);
   transform: translateY(-1px);
-  box-shadow: 0 12px 30px rgba(41, 151, 255, 0.4);
+  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.3);
 }
 
 .btn-primary-cta:active {
@@ -650,12 +678,12 @@ p.apple-sub {
 }
 
 /* ==========================================================================
-   Apple Modal Sheets (iOS Bottom Sheet / Frosted Glass Sheet)
+   Apple Modal Sheets (Light Frosted Acrylic Sheet)
    ========================================================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: none;
@@ -667,7 +695,7 @@ p.apple-sub {
 }
 
 .modal-content {
-  background: rgba(30, 30, 32, 0.88);
+  background: var(--apple-modal-bg);
   backdrop-filter: blur(30px) saturate(190%);
   -webkit-backdrop-filter: blur(30px) saturate(190%);
   border: 1px solid var(--apple-border);
@@ -680,7 +708,8 @@ p.apple-sub {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.8);
+  color: var(--apple-text-primary);
 }
 
 .modal-header {
@@ -690,7 +719,7 @@ p.apple-sub {
 }
 
 .btn-close-modal {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   border: none;
   color: var(--apple-text-secondary);
   width: 28px;
@@ -705,21 +734,21 @@ p.apple-sub {
 }
 
 .btn-close-modal:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--apple-text-primary);
 }
 
 /* ==========================================================================
-   Apple Watch / Health Dashboard Mini Grid
+   Apple Watch / Health Dashboard Mini Grid (Light Mode)
    ========================================================================== */
 .telemetry-mini-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.03);
   border-radius: 16px;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .telemetry-stat {

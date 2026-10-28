@@ -17,33 +17,35 @@
 
 ---
 
-## 2. Tasarım Sistemi ve Tokenlar (Apple Pro Design Tokens)
+## 2. Tasarım Sistemi ve Tokenlar (Apple Pro Light & Dark Tokens)
 
-### 2.1. Renk Paleti (Cupertino OLED Dark Palette)
+### 2.1. Renk Paleti (Cupertino Light Palette - Varsayılan Açık Tema)
 | Token Adı | Değer | Kullanım Alanı | Anlamsal Karşılığı |
 |---|---|---|---|
-| `--apple-black` | `#000000` | Saf OLED arka plan | Apple Pro derin kontrast |
-| `--apple-card` | `rgba(28, 28, 30, 0.65)` | Frosted glass kartlar | Apple akrilik yüzey |
-| `--apple-border` | `rgba(255, 255, 255, 0.12)` | Mikro çerçeveler | Fırçalanmış titanyum kenar |
-| `--apple-blue` | `#2997ff` | Birincil aksiyonlar | Apple System Blue |
-| `--apple-purple` | `#bf5af2` | Sokratik AI Tutor | Apple Intelligence / Siri Aurora |
-| `--apple-red` | `#ff453a` | Kriz telemetrisi, 08:00 çöküşü | Apple System Red aciliyet |
-| `--apple-green` | `#30d158` | İyi Son (Son A), kurtarılan hasta | Apple Health / Fitness Green |
-| `--apple-text-primary`| `#f5f5f7` | Başlıklar ve birincil metin | Apple Platinum White |
-| `--apple-text-secondary`| `#86868b` | Alt metinler ve açıklamalar | Apple Space Gray |
+| `--apple-bg` | `#f5f5f7` | Porselen Açık Arka Plan | Apple.com / iOS Light Canvas |
+| `--apple-card` | `rgba(255, 255, 255, 0.82)` | Frosted White Glass | Apple Akrilik Buzlu Cam |
+| `--apple-border` | `rgba(0, 0, 0, 0.08)` | Mikro Çerçeveler | Hassas Doğal Ayrım Çizgisi |
+| `--apple-blue` | `#0071e3` | Birincil Aksiyonlar & Pill CTA | Apple System Blue |
+| `--apple-purple` | `#af52de` | Sokratik AI Tutor | Apple Intelligence / Siri Aurora |
+| `--apple-red` | `#ff3b30` | 08:00 Kriz Göstergesi & Ceza | Apple System Red Aciliyet |
+| `--apple-green` | `#34c759` | İyi Son (Son A), kurtarılan hasta | Apple Fitness & Health Green |
+| `--apple-text-primary`| `#1d1d1f` | Başlıklar ve Birincil Metin | Apple Graphite Black |
+| `--apple-text-secondary`| `#86868b` | Alt Metinler & Etiketler | Apple Space Gray |
+
+*(Not: Üst menüdeki "🌙 Koyu" butonuyla istendiğinde Apple OLED Dark temasına tek tıkla geçiş yapılabilir).*
 
 ### 2.2. Tipografi (Typography)
 - **Ana Yazı Tipi:** `-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif`
 - **Monospace Yazı Tipi:** `"SF Mono", "JetBrains Mono", Menlo, Consolas, monospace`
 - **Ölçekler ve Efektler:**
-  - `Hero Title`: 26px / Bold / Brushed Titanium Gradient (`linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%)`)
+  - `Hero Title`: 26px / Bold / Apple Graphite Gradient (`linear-gradient(180deg, #1d1d1f 0%, #434344 100%)`)
   - `Card Header`: 14px / Semi-Bold (Letter-spacing: -0.015em)
   - `Body Text`: 13px / Regular (Line-height: 1.45, Color: `#86868b`)
   - `Apple Pill Badges`: 11px / Medium (Letter-spacing: 0.04em)
 
 ### 2.3. Donanım ve Etkileşim Öğeleri
-- **Apple Dynamic Island:** Üst çentik yerine 126x32px boyutunda interaktif kamera/sensör adacığı.
-- **Titanium Bezel:** iPhone 16 Pro referanslı 4px `#2c2c2e` fırçalanmış çerçeve ve yumuşak derin gölge.
+- **Apple Dynamic Island:** Açık tema gövde üzerinde yüksek kontrast oluşturan 126x32px siyah parlak sensör adacığı.
+- **Silver Titanium Bezel:** iPhone 16 Pro Silver referanslı 4px `#d2d2d7` kenarlık ve yumuşak derin gölge.
 - **Apple Pill CTA:** 980px yuvarlatılmış hap formunda birincil aksiyon butonları.
 
 ---

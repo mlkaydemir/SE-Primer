@@ -30,14 +30,17 @@ class SEPrimerApp {
         }
       ],
       apiKey: localStorage.getItem('se_primer_gemini_api_key') || '',
-      viewMode: 'mobile'
+      viewMode: 'mobile',
+      theme: localStorage.getItem('se_primer_theme') || 'light'
     };
 
     this.init();
   }
 
   init() {
+    document.documentElement.setAttribute('data-theme', this.state.theme);
     this.cacheDom();
+    this.updateThemeButton();
     this.bindEvents();
     this.render();
   }
@@ -48,6 +51,7 @@ class SEPrimerApp {
     this.telemetryBar = document.getElementById('telemetry-bar');
     this.stressBar = document.getElementById('stress-timer-bar');
     this.btnToggleView = document.getElementById('btn-toggle-view');
+    this.btnThemeToggle = document.getElementById('btn-theme-toggle');
     this.btnStitchModal = document.getElementById('btn-stitch-modal');
     this.btnPromptModal = document.getElementById('btn-prompt-modal');
     this.btnSettingsModal = document.getElementById('btn-settings-modal');
@@ -64,6 +68,7 @@ class SEPrimerApp {
 
   bindEvents() {
     this.btnToggleView?.addEventListener('click', () => this.toggleViewMode());
+    this.btnThemeToggle?.addEventListener('click', () => this.toggleTheme());
     this.btnSettingsModal?.addEventListener('click', () => this.openModal(this.settingsModal));
     this.btnPromptModal?.addEventListener('click', () => this.openModal(this.promptModal));
     this.btnStitchModal?.addEventListener('click', () => this.openModal(this.stitchModal));
@@ -94,6 +99,23 @@ class SEPrimerApp {
       modal.style.display = 'flex';
       if (modal === this.settingsModal && this.apiKeyInput) {
         this.apiKeyInput.value = this.state.apiKey;
+      }
+    }
+  }
+
+  toggleTheme() {
+    this.state.theme = this.state.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', this.state.theme);
+    localStorage.setItem('se_primer_theme', this.state.theme);
+    this.updateThemeButton();
+  }
+
+  updateThemeButton() {
+    if (this.btnThemeToggle) {
+      if (this.state.theme === 'light') {
+        this.btnThemeToggle.innerHTML = '🌙 Koyu';
+      } else {
+        this.btnThemeToggle.innerHTML = '☀️ Açık';
       }
     }
   }
