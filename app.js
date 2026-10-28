@@ -159,7 +159,7 @@ class SEPrimerApp {
         </p>
       </div>
 
-      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:12px 14px; font-size:12px; color:#f5f5f7; backdrop-filter:blur(10px);">
+      <div style="background:rgba(0,0,0,0.03); border:1px solid var(--apple-border); border-radius:14px; padding:10px 12px; font-size:12px; color:var(--apple-text-primary);">
         <strong style="color:var(--apple-orange);">⚡ 08:00 Kriz Başlangıcı:</strong> Randevu sistemi çöktü. Dün gece yeni sürüm çıktı. 300 hasta poliklinik kapısında bekliyor.
       </div>
 

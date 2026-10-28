@@ -200,45 +200,53 @@ main.main-viewport {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 32px 16px;
+  align-items: center;
+  padding: 8px 16px;
+  height: calc(100vh - 52px);
+  max-height: calc(100vh - 52px);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .frame-mobile {
   width: 100%;
-  max-width: 412px;
-  min-height: 852px;
+  max-width: 395px;
+  height: calc(100vh - 68px);
+  max-height: 820px;
+  min-height: 480px;
   background: var(--apple-chassis-bg);
   border: 4px solid var(--apple-chassis-border);
-  border-radius: 54px;
+  border-radius: 46px;
   box-shadow: var(--apple-chassis-shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all 0.4s var(--apple-ease);
+  transition: all 0.3s var(--apple-ease);
 }
 
 .frame-wide {
   width: 100%;
   max-width: 860px;
-  min-height: auto;
+  height: calc(100vh - 68px);
+  max-height: 820px;
   border-radius: 28px;
   border: 1px solid var(--apple-border);
   background: var(--apple-card);
   backdrop-filter: blur(30px);
   padding: 16px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
 }
 
 /* ==========================================================================
    Apple Dynamic Island (Iconic Contrast on Light Background)
    ========================================================================== */
 .dynamic-island {
-  width: 126px;
-  height: 32px;
+  width: 120px;
+  height: 30px;
   background: #000000;
-  margin: 12px auto 6px;
+  margin: 10px auto 4px;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -246,11 +254,12 @@ main.main-viewport {
   padding: 0 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 20;
+  flex-shrink: 0;
   transition: all 0.3s var(--apple-ease);
 }
 
 .dynamic-island:hover {
-  width: 210px;
+  width: 200px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
 }
 
@@ -283,13 +292,14 @@ main.main-viewport {
    ========================================================================== */
 .telemetry-bar {
   background: transparent;
-  padding: 6px 20px 10px;
+  padding: 4px 16px 8px;
   font-size: 11px;
   font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--apple-text-secondary);
+  flex-shrink: 0;
 }
 
 .telemetry-item {
@@ -334,6 +344,7 @@ main.main-viewport {
   height: 4px;
   width: 100%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .stress-timer-fill {
@@ -348,11 +359,24 @@ main.main-viewport {
    Screen Content & Cupertino Glass Cards (Light Porcelain)
    ========================================================================== */
 .screen-container {
-  padding: 14px 18px 24px;
+  padding: 10px 14px 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+.screen-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.screen-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
 }
 
 /* Apple Frosted Glass Card */
@@ -361,12 +385,12 @@ main.main-viewport {
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--apple-border);
-  border-radius: 20px;
-  padding: 16px 18px;
+  border-radius: 18px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.02);
   transition: all 0.25s var(--apple-ease);
 }
 
@@ -383,7 +407,7 @@ main.main-viewport {
 
 /* Typography */
 h1.apple-headline {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.15;
@@ -393,9 +417,9 @@ h1.apple-headline {
 }
 
 p.apple-sub {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--apple-text-secondary);
-  line-height: 1.45;
+  line-height: 1.4;
   letter-spacing: -0.01em;
 }
 
@@ -405,21 +429,21 @@ p.apple-sub {
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 8px;
 }
 
 .selectable-chip {
   background: var(--apple-surface-elevated);
   border: 1px solid var(--apple-border);
-  border-radius: 16px;
-  padding: 14px 12px;
+  border-radius: 14px;
+  padding: 10px 10px;
   color: var(--apple-text-primary);
   cursor: pointer;
   text-align: left;
   transition: all 0.25s var(--apple-ease);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
