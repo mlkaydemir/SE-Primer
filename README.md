@@ -10,7 +10,7 @@
 
 1. **GitHub Repository:** [https://github.com/mlkaydemir/SE-Primer](https://github.com/mlkaydemir/SE-Primer)
 2. **Google AI Studio Uygulama / Prompt Linki:** [https://aistudio.google.com/app/prompts?state=se-primer-socratic-tutor](https://aistudio.google.com/app/prompts?state=se-primer-socratic-tutor) *(Ayrıca yerel çalışan uygulama: `http://localhost:3000`)*
-3. **60 Saniyelik Cypress Demo Video Linki:** [https://youtu.be/se-primer-cypress-60s-demo](https://youtu.be/se-primer-cypress-60s-demo) *(Ayrıca yerel artefakt: `cypress/videos/se_primer_all_paths.cy.js.mp4`)*
+3. **60 Saniyelik Cypress Demo Video Linki:** https://youtube.com/shorts/cD2AjXlin9Q?si=zeCxRpfPmYZWJGDx
 
 ---
 
