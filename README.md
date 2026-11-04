@@ -7,12 +7,29 @@
 
 ---
 
-## 📌 Teslim Formu ve Bağlantılar (Tek Repo, Dört Link)
+## 📌 Teslim Formu ve Dört Ana Bağlantı (Tek Repo, Dört Link)
 
-1. **GitHub Repository:** [https://github.com/mlkaydemir/SE-Primer](https://github.com/mlkaydemir/SE-Primer)
-2. **Hugging Face Model Linki (Commit-Pinned):** [https://huggingface.co/mlkaydemir/se-primer-cognitive-intervention/resolve/7d9b41a3c5e8864f1e09a32c25608d1f04561234/model.onnx](https://huggingface.co/mlkaydemir/se-primer-cognitive-intervention/resolve/7d9b41a3c5e8864f1e09a32c25608d1f04561234/model.onnx)
-3. **Canlı Uygulama / AI Studio Linki:** [Google AI Studio SE Primer Promptu](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221DlhQQh_k5OdhqEyxdb2JWggqdE5_SMWR%22%5D,%22action%22:%22open%22,%22userId%22:%22108107165496939741640%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing) *(Yerel Çalışan Uygulama: `http://localhost:3000`)*
-4. **60 Saniyelik Cypress Demo Video Linki:** [YouTube Shorts - 60s Demo](https://youtube.com/shorts/cD2AjXlin9Q?si=zeCxRpfPmYZWJGDx) *(Yerel Artefakt: `cypress/videos/se_primer_all_paths.cy.js.mp4`)*
+> 📝 **Hoca Teslim Formu:** [https://forms.gle/pr9QVEfLJuaFiXw39](https://forms.gle/pr9QVEfLJuaFiXw39)
+
+Aşağıdaki 4 bağlantı hem tıklanabilir markdown linki hem de kopyalanabilir ham URL olarak teslim formundaki alanlara birebir karşılık gelmektedir:
+
+### 1. GitHub Repository Linki:
+- **Link:** [https://github.com/mlkaydemir/SE-Primer](https://github.com/mlkaydemir/SE-Primer)
+- `https://github.com/mlkaydemir/SE-Primer`
+
+### 2. Hugging Face Model Linki (Commit-Pinned Sürüm):
+- **Link:** [Hugging Face Model ONNX (Commit: 7d9b41a)](https://huggingface.co/mlkaydemir/se-primer-cognitive-intervention/resolve/7d9b41a3c5e8864f1e09a32c25608d1f04561234/model.onnx)
+- `https://huggingface.co/mlkaydemir/se-primer-cognitive-intervention/resolve/7d9b41a3c5e8864f1e09a32c25608d1f04561234/model.onnx`
+
+### 3. Canlı Uygulama / Google AI Studio Linki:
+- **Link:** [Google AI Studio SE Primer Canlı Prompt Linki](https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221DlhQQh_k5OdhqEyxdb2JWggqdE5_SMWR%22%5D,%22action%22:%22open%22,%22userId%22:%22108107165496939741640%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing)
+- `https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221DlhQQh_k5OdhqEyxdb2JWggqdE5_SMWR%22%5D,%22action%22:%22open%22,%22userId%22:%22108107165496939741640%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing`
+- *(Yerel Bağımsız Çalışan Web Arayüzü: `http://localhost:3000`)*
+
+### 4. 60–90 Saniyelik Cypress Demo Video Linki:
+- **Link:** [YouTube Shorts - SE Primer 60s Demo Video](https://youtube.com/shorts/cD2AjXlin9Q?si=zeCxRpfPmYZWJGDx)
+- `https://youtube.com/shorts/cD2AjXlin9Q?si=zeCxRpfPmYZWJGDx`
+- *(Ayrıca Yerel Video Artefaktı: `cypress/videos/se_primer_all_paths.cy.js.mp4`)*
 
 ---
 
