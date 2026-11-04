@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>SE Primer · Kişiye Uyum Sağlayan Mühendislik Simülasyonu (YZM301)</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- ONNX Runtime Web & SE Primer ML Engine -->
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js"></script>
+  <script src="ml_onnx_engine.js"></script>
 </head>
 <body>
 
@@ -16,6 +19,7 @@
     </div>
     <div class="header-actions">
       <button id="btn-toggle-view" class="btn-nav">💻 Geniş Ekran</button>
+      <button id="btn-onnx-modal" class="btn-nav" style="background:rgba(0,113,227,0.12); border-color:rgba(0,113,227,0.3); color:#0071E3;">🧠 ONNX Model (v2)</button>
       <button id="btn-stitch-modal" class="btn-nav">🎨 Stitch</button>
       <button id="btn-eval-modal" class="btn-nav" style="background:rgba(191,90,242,0.12); border-color:rgba(191,90,242,0.25); color:#E9D5FF;">📊 Eval (25P)</button>
       <button id="btn-prompt-modal" class="btn-nav">🤖 AI Studio</button>
@@ -179,6 +183,48 @@ KESİN KURALLAR (SOKRATİK SÖZLEŞME):
       </div>
       <div style="display:flex; justify-content:space-between; align-items:center;">
         <span style="font-size:11px; color:#94A3B8;">Detaylı rapor için bakınız: <code>eval/TUTOR_EVAL.md</code> ve <code>tutor_eval.json</code></span>
+        <button class="btn-nav btn-close-modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: ONNX Model & Diferansiyel Parite Testi (v2) -->
+  <div id="onnx-modal" class="modal-overlay">
+    <div class="modal-content" style="max-width:880px;">
+      <div class="modal-header">
+        <h3 style="font-size:16px; font-weight:800; color:#60A5FA;">🧠 ONNX v2.0: Bilişsel Aşırı Yük Modeli & Parite Testi</h3>
+        <button class="btn-close-modal">&times;</button>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; background:#111827; border:1px solid #1F2937; border-radius:12px; padding:12px; font-size:11px; text-align:center;">
+        <div>
+          <div style="color:#9CA3AF; text-transform:uppercase; font-size:9.5px;">Model Mimarisi</div>
+          <div style="color:#F9FAFB; font-weight:700; margin-top:2px;">Random Forest (ONNX)</div>
+        </div>
+        <div>
+          <div style="color:#9CA3AF; text-transform:uppercase; font-size:9.5px;">Test Accuracy</div>
+          <div style="color:#10B981; font-weight:800; margin-top:2px;">%86.67 (Eşik: &ge; %85)</div>
+        </div>
+        <div>
+          <div style="color:#9CA3AF; text-transform:uppercase; font-size:9.5px;">Ağırlıklı F1-Skor</div>
+          <div style="color:#10B981; font-weight:800; margin-top:2px;">0.8648 (Eşik: &ge; 0.82)</div>
+        </div>
+        <div>
+          <div style="color:#9CA3AF; text-transform:uppercase; font-size:9.5px;">Parite Toleransı</div>
+          <div style="color:#3B82F6; font-weight:800; margin-top:2px;">&Delta; &lt; 1e-4 (Geçti)</div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+        <span style="font-size:12px; font-weight:700; color:#E5E7EB;">5 Referans Senaryo Diferansiyel Parite Testi (Python Oracle vs Web ONNX):</span>
+        <button id="btn-run-parity-test" class="btn-primary-cta" style="padding:6px 14px; font-size:11px;">▶ Tarayıcıda Parite Testini Koş</button>
+      </div>
+
+      <div id="parity-table-container" style="max-height:300px; overflow-y:auto; border:1px solid #374151; border-radius:10px; background:#0B0F19;">
+        <!-- app.js tarafından doldurulur -->
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#9CA3AF;">
+        <span>Referans dosya: <code>tests/parite.json</code> | Python Kahini: <code>tests/parite.py</code></span>
         <button class="btn-nav btn-close-modal">Kapat</button>
       </div>
     </div>

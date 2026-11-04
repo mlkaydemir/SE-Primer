@@ -933,3 +933,71 @@ p.apple-sub {
   text-transform: uppercase;
   margin-top: 2px;
 }
+
+/* ==========================================================================
+   v2.0 ONNX ML Telemetry & Adaptive Cognitive Intervention Badges
+   ========================================================================== */
+.ml-badge-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px 0;
+}
+
+.ml-telemetry-pill {
+  background: rgba(0, 113, 227, 0.08);
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  border-radius: 980px;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--text-dark);
+}
+
+.ml-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-blue);
+  box-shadow: 0 0 6px var(--text-blue);
+}
+
+.ml-pill-label {
+  font-weight: 700;
+  color: var(--text-blue);
+  letter-spacing: 0.04em;
+}
+
+.ml-pill-prob {
+  font-weight: 700;
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.ml-pill-status {
+  font-size: 9.5px;
+  color: var(--text-muted);
+}
+
+.ml-intervention-card {
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.12) 0%, rgba(255, 59, 48, 0.08) 100%);
+  border: 1px solid rgba(255, 149, 0, 0.4);
+  border-radius: 14px;
+  padding: 9px 12px;
+  font-size: 11px;
+  color: #7A3E00;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 3px 12px rgba(255, 149, 0, 0.1);
+  animation: pulse-border 2s infinite ease-in-out;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: rgba(255, 149, 0, 0.4); }
+  50% { border-color: rgba(255, 59, 48, 0.7); }
+}

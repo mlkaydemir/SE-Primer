@@ -1,0 +1,53 @@
+{
+  "model_name": "se-primer-cognitive-intervention",
+  "version": "2.0.0",
+  "task": "binary_classification",
+  "description": "SE Primer v2 Bilişsel Aşırı Yüklenme ve Adaptif Müdahale Modeli",
+  "framework": "scikit-learn 1.7.2 RandomForestClassifier -> ONNX Opset 12",
+  "seed": 42,
+  "features": [
+    "seviye_kod",
+    "rol_kod",
+    "sahne_no",
+    "karar_suresi_sn",
+    "karar_degistirme_sayisi",
+    "onceki_hata_sayisi",
+    "ipucu_tiklama_sayisi"
+  ],
+  "feature_types": [
+    "float32",
+    "float32",
+    "float32",
+    "float32",
+    "float32",
+    "float32",
+    "float32"
+  ],
+  "target": "mudahale_gerekli",
+  "classes": [
+    0,
+    1
+  ],
+  "class_labels": {
+    "0": "otonom_akis_mudahale_yok",
+    "1": "bilissel_yuk_mudahale_gerekli"
+  },
+  "metrics": {
+    "accuracy": 0.8667,
+    "f1_score": 0.8648,
+    "roc_auc": 0.9556,
+    "parity_max_diff": 1.8e-07
+  },
+  "thresholds": {
+    "min_accuracy": 0.85,
+    "min_f1": 0.82,
+    "min_roc_auc": 0.85,
+    "parity_tolerance": 0.0001
+  },
+  "input_tensor_name": "float_input",
+  "output_tensor_names": [
+    "output_label",
+    "output_probability"
+  ],
+  "gatekeeper_status": "PASSED"
+}

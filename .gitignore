@@ -3,4 +3,6 @@ node_modules/
 Thumbs.db
 cypress/screenshots/
 *.log
+__pycache__/
+*.pyc
 

@@ -1,0 +1,9 @@
+scikit-learn>=1.7.0
+onnx>=1.16.0
+skl2onnx>=1.18.0
+onnxruntime>=1.19.0
+pandas>=2.0.0
+numpy>=1.23.0
+fastapi>=0.110.0
+uvicorn>=0.30.0
+pytest>=8.0.0

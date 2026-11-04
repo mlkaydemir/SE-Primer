@@ -1,0 +1,92 @@
+{
+  "generated_by": "train.py",
+  "oracle_framework": "Python onnxruntime 1.23.2",
+  "tolerance": 0.0001,
+  "test_cases": [
+    {
+      "id": "CASE-1-JUNIOR-PANIK",
+      "description": "Junior fullstack Karar 1'de 32s tereddüt edip 4 kez buton değiştirdi",
+      "input": [
+        0.0,
+        2.0,
+        1.0,
+        32.0,
+        4.0,
+        0.0,
+        2.0
+      ],
+      "expected_class": 1,
+      "oracle_probability_class_0": 0.021223,
+      "oracle_probability_class_1": 0.978777,
+      "oracle_predicted_class": 1
+    },
+    {
+      "id": "CASE-2-SENIOR-HIZLI",
+      "description": "Senior devops Karar 2'de 6s içinde tereddütsüz karar verdi",
+      "input": [
+        1.0,
+        1.0,
+        2.0,
+        6.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expected_class": 0,
+      "oracle_probability_class_0": 0.963235,
+      "oracle_probability_class_1": 0.036765,
+      "oracle_predicted_class": 0
+    },
+    {
+      "id": "CASE-3-JUNIOR-STABIL",
+      "description": "Junior backend Karar 2'de sakin ilerliyor, az tereddüt",
+      "input": [
+        0.0,
+        0.0,
+        2.0,
+        12.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "expected_class": 0,
+      "oracle_probability_class_0": 0.89477,
+      "oracle_probability_class_1": 0.10523,
+      "oracle_predicted_class": 0
+    },
+    {
+      "id": "CASE-4-SENIOR-KVKK-TEREDDUT",
+      "description": "Senior Karar 3 KVKK sahnesinde önceki hatası var ve 34s bekledi",
+      "input": [
+        1.0,
+        0.0,
+        3.0,
+        34.0,
+        3.0,
+        1.0,
+        1.0
+      ],
+      "expected_class": 1,
+      "oracle_probability_class_0": 0.080338,
+      "oracle_probability_class_1": 0.919662,
+      "oracle_predicted_class": 1
+    },
+    {
+      "id": "CASE-5-ORTA-SINIR-DURUMU",
+      "description": "Junior Karar 1'de 21s bekledi, 2 kez buton değiştirdi",
+      "input": [
+        0.0,
+        1.0,
+        1.0,
+        21.0,
+        2.0,
+        0.0,
+        1.0
+      ],
+      "expected_class": 1,
+      "oracle_probability_class_0": 0.210481,
+      "oracle_probability_class_1": 0.789519,
+      "oracle_predicted_class": 1
+    }
+  ]
+}

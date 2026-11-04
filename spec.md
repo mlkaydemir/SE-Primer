@@ -250,3 +250,69 @@ flowchart TD
 2. **Kesin Kural 2 (Sokratik Yansıtma):** Model öğrencinin sorusunu alıp temel yazılım prensibine (durum yönetimi, idempotentlik, veri bütünlüğü, KVKK) bağlayarak 1 adet düşündürücü soru yöneltir.
 3. **Kesin Kural 3 (Rol Odaklılık):** Eğer oyuncu Junior ise ipucunda temel kavramlar (örn. "schema migration", "smoke test") basit bir benzetmeyle hissettirilir; Senior ise mimari riskler (deadlock, transaction isolation, audit log) vurgulanır.
 
+---
+
+## 7. The Primer v2: Bilişsel Aşırı Yük & Adaptif Müdahale Modeli Spesifikasyonu (Machine Learning Specification)
+
+> **Mühendislik Prensibi:** Makine öğrenmesi yaşam döngüsü düz bir çizgi değil; veri toplama, eğitim, doğrulama (validation) ve sürekli gözlemden (monitoring) oluşan yaşayan bir sistemdir (Amershi vd., 2019; Shankar vd., 2022). Bu sürümde sabit kurallar yerine oyuncunun gerçek zamanlı davranışından öğrenen dikey bir ML modeli konumlandırılmıştır.
+
+### 7.1. Uyum Hedefi ve Problem Tanımı (Cognitive Overload & Adaptive Intervention)
+Yazılım krizinde nöbetçi mühendisin bilişsel kapasitesi (Sweller Bilişsel Yük Kuramı) kritik önemdedir:
+- Oyuncu kararsız kalıp butonlar arasında gidip geliyorsa, süre uzuyorsa veya art arda hatalı seçimler yapıyorsa bir **bilişsel felç (cognitive paralysis)** yaşamaktadır.
+- Model, oyuncunun telemetrik mikro-davranışlarını izleyerek ikili sınıflandırma (Binary Classification) yapar:
+  $$\hat{y} \in \{0, 1\}$$
+  - `0`: **Otonom Akış (Müdahale Yok):** Oyuncu kendinden emin, sistem müdahale etmez.
+  - `1`: **Bilişsel Aşırı Yük / Müdahale Gerekli:** Model anında pedagojik kalkanı devreye sokar (Sokratik ipucu kartı parlar, Senior modundaysa stres sayacı geçici olarak sakinleştirme moduna geçer).
+
+### 7.2. Girdi Vektörü ve Özellik Uzayı (Feature Vector)
+Model aşağıdaki 7 boyutlu tabular girdi vektörünü $x \in \mathbb{R}^7$ tüketir:
+1. `seviye_kod` (float32): 0.0 (Junior), 1.0 (Senior)
+2. `rol_kod` (float32): 0.0 (Backend), 1.0 (DevOps), 2.0 (Fullstack)
+3. `sahne_no` (float32): 1.0 (Mimari), 2.0 (Test & Doğrulama), 3.0 (KVKK)
+4. `karar_suresi_sn` (float32): Sahnenin açılışından karar anına kadar geçen süre (saniye)
+5. `karar_degistirme_sayisi` (float32): Butonlar arasında gezinip vazgeçme / kararsızlık adedi
+6. `onceki_hata_sayisi` (float32): Simülasyonda daha önce yapılan hatalı/riskli seçim adedi
+7. `ipucu_tiklama_sayisi` (float32): Kullanıcının tutor veya yardım butonuna basma sıklığı
+
+### 7.3. Altın Standart Kabul Eşikleri (Eğitimden ÖNCE Tanımlanmıştır)
+Model artefaktı (`model.onnx`) ve sözleşmesi (`config.json`) üretilmeden önce `train.py` tarafından denetlenecek katı eval kapısı (Quality Gate):
+- **Accuracy (Genel Doğruluk):** $\ge 0.85$ (%85)
+- **F1-Score (Ağırlıklı / Macro F1):** $\ge 0.82$
+- **ROC-AUC (Ayırt Edicilik):** $\ge 0.85$
+- **Diferansiyel ONNX Parite Toleransı:** $|\hat{y}_{sklearn} - \hat{y}_{onnx}| \le 10^{-4}$ ($0.0001$)
+
+> **Mühendislik Sözleşmesi (Gatekeeper):** Eğer eğitim sonucunda test kümesi metrikleri bu eşiklerin herhangi birinin altında kalırsa, eğitim betiği derhal `AssertionError / SystemExit` fırlatarak durur; hiçbir artefakt yayınlanmaz veya istemciye sunulmaz.
+
+---
+
+### 7.4. Üç Yeni Kabul Örneği (AC-7, AC-8, AC-9 · Gherkin)
+
+```gherkin
+Kabul Örneği 7 (AC-7): Yüksek Tereddüt ve Karar Değiştirme Durumunda Adaptif Müdahale
+  DİYELİM Kİ oyuncu Karar 1 (Mimari Kriz) sahnesindedir
+  VE karar_suresi_sn > 25 saniye, karar_degistirme_sayisi >= 3'tür
+  EĞER tarayıcıdaki yerel ONNX modeli çıkarım (inference) yaparsa
+  O ZAMAN modelin ürettiği mudahale_olasiligi >= 0.60 olur
+  VE arayüzde 'Sokratik Adaptif Müdahale' kartı otomatik olarak belirir
+  VE oyuncuya doğrudan cevabı vermeden odaklanması gereken mimari kök neden sorulur.
+```
+
+```gherkin
+Kabul Örneği 8 (AC-8): Kararlı ve Hızlı Oyuncuda Otonominin Korunması
+  DİYELİM Kİ oyuncu Senior profilinde Karar 2 (Test & Doğrulama) sahnesindedir
+  VE karar_suresi_sn <= 8 saniye, karar_degistirme_sayisi == 0, onceki_hata == 0'dır
+  EĞER yerel ONNX modeli çıkarım yaparsa
+  O ZAMAN modelin ürettiği mudahale_olasiligi < 0.35 olur
+  VE arayüzde hiçbir davetsiz ipucu veya modal açılmaz; oyuncunun otonom akışı kesilmez.
+```
+
+```gherkin
+Kabul Örneği 9 (AC-9): Diferansiyel Parite Testi ve Sayısal Hata Toleransı
+  DİYELİM Kİ test süitinde tanımlı 5 adet referans parite girdisi mevcuttur
+  EĞER aynı girdiler hem Python Referans Kahini (Oracle - onnxruntime) hem de web tarayıcısı (onnxruntime-web) tarafından hesaplanırsa
+  O ZAMAN iki bağımsız ortamın ürettiği sınıf olasılıkları arasındaki mutlak fark:
+    |P_web - P_python| < 1e-4 (0.0001) olmalıdır
+  VE Cypress diferansiyel test süiti bu tolerans sınırını yeşil olarak doğrulamalıdır.
+```
+
+

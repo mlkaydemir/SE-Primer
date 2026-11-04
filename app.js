@@ -31,7 +31,15 @@ class SEPrimerApp {
       ],
       apiKey: localStorage.getItem('se_primer_gemini_api_key') || '',
       viewMode: 'mobile',
-      theme: localStorage.getItem('se_primer_theme') || 'light'
+      theme: localStorage.getItem('se_primer_theme') || 'light',
+      mlTelemetry: {
+        sceneStartTime: Date.now(),
+        decisionChanges: 0,
+        previousErrors: 0,
+        hintClicks: 0,
+        lastProb: 0.05,
+        interventionActive: false
+      }
     };
 
     this.init();
@@ -56,12 +64,16 @@ class SEPrimerApp {
     this.btnPromptModal = document.getElementById('btn-prompt-modal');
     this.btnSettingsModal = document.getElementById('btn-settings-modal');
     this.btnEvalModal = document.getElementById('btn-eval-modal');
+    this.btnOnnxModal = document.getElementById('btn-onnx-modal');
     this.btnRunDemo = document.getElementById('btn-run-demo');
     this.settingsModal = document.getElementById('settings-modal');
     this.promptModal = document.getElementById('prompt-modal');
     this.stitchModal = document.getElementById('stitch-modal');
     this.evalModal = document.getElementById('eval-modal');
+    this.onnxModal = document.getElementById('onnx-modal');
     this.evalTableContainer = document.getElementById('eval-table-container');
+    this.parityTableContainer = document.getElementById('parity-table-container');
+    this.btnRunParityTest = document.getElementById('btn-run-parity-test');
     this.apiKeyInput = document.getElementById('api-key-input');
     this.saveApiKeyBtn = document.getElementById('btn-save-api-key');
   }
@@ -76,6 +88,11 @@ class SEPrimerApp {
       this.populateEvalTable();
       this.openModal(this.evalModal);
     });
+    this.btnOnnxModal?.addEventListener('click', () => {
+      this.populateParityTable();
+      this.openModal(this.onnxModal);
+    });
+    this.btnRunParityTest?.addEventListener('click', () => this.populateParityTable());
     this.btnRunDemo?.addEventListener('click', () => this.runInteractiveCypressDemo());
 
     document.querySelectorAll('.btn-close-modal').forEach(btn => {
@@ -346,6 +363,102 @@ class SEPrimerApp {
     }
   }
 
+  async populateParityTable() {
+    if (!this.parityTableContainer || !window.sePrimerML) return;
+    this.parityTableContainer.innerHTML = `<div style="padding:16px; color:#93C5FD;">⏳ ONNX parite testleri koşturuluyor...</div>`;
+    try {
+      const res = await window.sePrimerML.runParitySuite();
+      const rows = res.cases.map(c => `
+        <tr style="border-bottom:1px solid #1F2937; font-size:11px;">
+          <td style="padding:8px; font-weight:700; color:#93C5FD;">${c.id}</td>
+          <td style="padding:8px; color:#E5E7EB; font-family:monospace; font-size:10px;">[${c.input.join(', ')}]</td>
+          <td style="padding:8px; color:#A7F3D0; font-family:monospace;">${c.expectedP1.toFixed(6)}</td>
+          <td style="padding:8px; color:#FDE047; font-family:monospace;"><span data-cy="p">${c.webP1.toFixed(6)}</span></td>
+          <td style="padding:8px; color:#CBD5E1; font-family:monospace;">${c.diff.toFixed(8)}</td>
+          <td style="padding:8px; text-align:center;">
+            <span data-cy="parity-status" style="background:${c.passed ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'}; color:${c.passed ? '#34D399' : '#F87171'}; font-weight:700; padding:2px 8px; border-radius:4px; font-size:10px;">
+              ${c.passed ? '✅ GEÇTİ (Δ < 1e-4)' : '❌ KALDI'}
+            </span>
+          </td>
+        </tr>
+      `).join('');
+
+      this.parityTableContainer.innerHTML = `
+        <table style="width:100%; border-collapse:collapse; text-align:left; background:#0B0F19;">
+          <thead>
+            <tr style="background:#1E293B; font-size:10px; text-transform:uppercase; color:#94A3B8;">
+              <th style="padding:8px;">Test ID</th>
+              <th style="padding:8px;">Girdi [7]</th>
+              <th style="padding:8px;">Python Oracle P(1)</th>
+              <th style="padding:8px;">Web ONNX P(1)</th>
+              <th style="padding:8px;">Fark (Δ)</th>
+              <th style="padding:8px; text-align:center;">Parite Durumu</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+    } catch (e) {
+      this.parityTableContainer.innerHTML = `<div style="padding:16px; color:#F87171;">Parite testi hatası: ${e.message}</div>`;
+    }
+  }
+
+  async updateModelTelemetry() {
+    if (!window.sePrimerML) return;
+    const { level, role } = this.state.userProfile;
+    const seviyeCode = level === 'junior' ? 0.0 : 1.0;
+    const roleCode = role === 'backend' ? 0.0 : (role === 'devops' ? 1.0 : 2.0);
+    const sceneNo = Number(this.state.currentStepIndex + 1);
+    const elapsed = Math.max(1.0, (Date.now() - this.state.mlTelemetry.sceneStartTime) / 1000);
+    const changes = Number(this.state.mlTelemetry.decisionChanges);
+    const errors = Number(this.state.mlTelemetry.previousErrors);
+    const hints = Number(this.state.mlTelemetry.hintClicks);
+
+    const features = [seviyeCode, roleCode, sceneNo, elapsed, changes, errors, hints];
+    const res = await window.sePrimerML.predict(features);
+    const p1 = res.probabilityClass1;
+    this.state.mlTelemetry.lastProb = p1;
+
+    const probEl = document.getElementById('ml-live-prob');
+    const statusEl = document.getElementById('ml-live-status');
+    const boxEl = document.getElementById('ml-intervention-box');
+
+    if (probEl) {
+      probEl.innerText = `P: ${p1.toFixed(4)}`;
+      probEl.setAttribute('data-cy', 'p');
+      probEl.setAttribute('data-cy-prob', p1.toFixed(4));
+    }
+    if (statusEl) {
+      statusEl.innerText = p1 >= 0.50 ? '⚠️ Aşırı Yük' : '🟢 Otonom';
+      statusEl.style.color = p1 >= 0.50 ? '#EF4444' : '#10B981';
+    }
+
+    if (boxEl) {
+      if (p1 >= 0.50) {
+        boxEl.style.display = 'block';
+        boxEl.innerHTML = `
+          <div class="ml-intervention-card" data-cy="ml-intervention">
+            <span>⚡ <strong>ML Adaptif Müdahale:</strong> Bilişsel aşırı yüklenme tespit edildi (%${(p1 * 100).toFixed(0)} olasılık). Sokratik ipucu kartı öne çıkarıldı!</span>
+          </div>
+        `;
+        const tutorDock = document.querySelector('.tutor-dock');
+        if (tutorDock) {
+          tutorDock.style.borderColor = 'rgba(255, 149, 0, 0.7)';
+          tutorDock.style.boxShadow = '0 0 16px rgba(255, 149, 0, 0.25)';
+        }
+      } else {
+        boxEl.style.display = 'none';
+        const tutorDock = document.querySelector('.tutor-dock');
+        if (tutorDock) {
+          tutorDock.style.borderColor = 'rgba(175, 82, 222, 0.25)';
+          tutorDock.style.boxShadow = '0 6px 20px rgba(175, 82, 222, 0.08)';
+        }
+      }
+    }
+  }
+
   renderCrisisScreen() {
     const step = CRISIS_STEPS[this.state.currentStepIndex];
     const isSenior = this.state.userProfile.level === 'senior';
@@ -426,6 +539,19 @@ class SEPrimerApp {
         </div>
       </div>
 
+      <!-- v2.0 ONNX Model Telemetrisi & Bilişsel Aşırı Yük Tespiti -->
+      <div id="ml-badge-container" class="ml-badge-container">
+        <div class="ml-telemetry-pill">
+          <span class="ml-pill-dot"></span>
+          <span class="ml-pill-label">ML v2 ONNX:</span>
+          <span class="ml-pill-prob" id="ml-live-prob" data-cy="p">P: 0.0500</span>
+          <span class="ml-pill-status" id="ml-live-status" data-cy="model-status">Otonom</span>
+        </div>
+        <div style="font-size:10px; color:var(--apple-text-secondary);" id="ml-live-mode">onnxruntime-web (WASM)</div>
+      </div>
+
+      <div id="ml-intervention-box" style="display:none; margin: 4px 0;"></div>
+
       <!-- Karar Seçenekleri -->
       <div style="display:flex; flex-direction:column; gap:10px;">
         <span style="font-size:11px; font-weight:600; color:var(--apple-text-secondary); text-transform:uppercase; letter-spacing:0.04em;">Mühendislik Kararı:</span>
@@ -500,12 +626,20 @@ class SEPrimerApp {
     // Otomatik alta kaydır
     const chatBox = document.getElementById('tutor-chat-box');
     if (chatBox) chatBox.scrollTop = chatBox.scrollHeight;
+
+    // v2.0 ONNX model telemetrisini anlık hesapla
+    this.updateModelTelemetry();
   }
 
   handleDecisionSelect(choiceId) {
     const step = CRISIS_STEPS[this.state.currentStepIndex];
     const opt = step.options.find(o => o.id === choiceId);
     if (!opt) return;
+
+    this.state.mlTelemetry.decisionChanges++;
+    if (choiceId === 'B') {
+      this.state.mlTelemetry.previousErrors++;
+    }
 
     this.state.currentChoice = choiceId;
     this.state.choiceFeedback = opt.feedback;
@@ -517,6 +651,8 @@ class SEPrimerApp {
         ...opt.feedback.telemetryImpact
       };
     }
+
+    this.updateModelTelemetry();
 
     this.renderCrisisScreen();
   }
