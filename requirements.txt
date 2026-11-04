@@ -7,3 +7,4 @@ numpy>=1.23.0
 fastapi>=0.110.0
 uvicorn>=0.30.0
 pytest>=8.0.0
+

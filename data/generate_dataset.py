@@ -150,3 +150,4 @@ with open("data/oturumlar.csv", "w", newline="", encoding="utf-8") as f:
 print(f"Toplam {len(rows)} satır 'data/oturumlar.csv' dosyasına yazıldı.")
 mudahale_oran = sum(r['mudahale_gerekli'] for r in rows) / len(rows)
 print(f"Sınıf Dağılımı: Müdahale Gerekli = %{mudahale_oran*100:.1f}, Müdahale Gerekmez = %{(1-mudahale_oran)*100:.1f}")
+

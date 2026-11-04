@@ -142,3 +142,4 @@ class MLOnnxEngine {
 
 // Global olarak dışa aktar
 window.sePrimerML = new MLOnnxEngine();
+

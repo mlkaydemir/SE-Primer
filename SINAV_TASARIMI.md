@@ -36,3 +36,4 @@
 ## 3. Akıllı Çeldiriciler (Ezber Bozan Sorular)
 - **Çeldirici 1:** *"Model test kümesinde %99 doğruluk aldı, o halde hemen canlıya alabiliriz."* (Hatalı: Eğitim-test sızıntısı -data leakage- veya sınıf dengesizliği olabilir; model kartı ve shadow deployment olmaksızın alınamaz).
 - **Çeldirici 2:** *"Sunucudaki model ile mobildeki model aynı `.onnx` dosyasıdır, o halde diferansiyel test gereksizdir."* (Hatalı: Dosya aynı olsa bile çalışma zamanı motorları -runtime engines- ve donanım mimarileri farklı sonuç üretebilir; diferansiyel parite şarttır).
+

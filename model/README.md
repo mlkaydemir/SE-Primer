@@ -64,3 +64,4 @@ Eğitimden önce `spec.md` dokümanında belirlenen altın standart kabul eşikl
 - **Akademik Not Verme:** Bu model bir sınav notlandırma veya insan eleme sistemi değildir; amacı cezalandırmak değil, öğrenciye doğru anda pedagojik ipucu uzatmaktır.
 - **Tıbbi Karar Destek:** Gerçek bir hastanenin triyaj veya kriz yönetiminde doğrudan karar mercii olarak kullanılamaz.
 - **Kişisel Veri Profillemesi:** Oyuncunun gerçek kimliğini tahmin etmek, parmak izi çıkarmak veya kişisel veri toplamak için kullanılamaz.
+

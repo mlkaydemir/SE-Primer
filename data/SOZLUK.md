@@ -37,3 +37,4 @@ Bir karar satırında `mudahale_gerekli = 1` olarak etiketlenmesinin pedagojik v
 3. **VE/VEYA Zincirleme Hata Riski:** $onceki\_hata\_sayisi \ge 1$ iken $ipucu\_tiklama\_sayisi \ge 1$ olması.
 
 Bu koşulları sağlayan oyuncu bilişsel yük altında sıkışmış kabul edilir ve modelin $P(y=1) \ge 0.50$ üreterek proaktif Sokratik soru sorması hedeflenir.
+

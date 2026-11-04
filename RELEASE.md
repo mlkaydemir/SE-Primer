@@ -80,3 +80,4 @@ Derste incelenen üç temel mühendislik sorusuna göre modelin çalıştırıla
 SE Primer projesinde birincil olarak **"Tarayıcı İçi Çıkarım (onnxruntime-web)"** mimarisi seçilmiştir.
 - **Gerekçe:** 64 KB'lık modelimiz hem kullanıcı gizliliğini (KVKK) cihaz içinde korumakta, hem sunucu barındırma maliyetlerini sıfırlamakta, hem de sıfır kurulumla her akıllı telefonda anında çalışabilmektedir.
 - *(Ayrıca Bonus +10 isterine tam uyum için Python FastAPI tabanlı bir sunucu alternatifi de `server_bonus.py` olarak sisteme dahil edilmiş ve diferansiyel paritesi kanıtlanmıştır).*
+
